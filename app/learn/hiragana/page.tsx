@@ -24,10 +24,6 @@ export default async function HiraganaPage() {
       </div>
 
       <Tabs defaultValue="all" className="w-full">
-        <TabsList className="grid w-full max-w-md mx-auto grid-cols-2">
-          <TabsTrigger value="all">All Characters</TabsTrigger>
-          <TabsTrigger value="n5">JLPT N5</TabsTrigger>
-        </TabsList>
 
         <TabsContent value="all" className="mt-6">
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">

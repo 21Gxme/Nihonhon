@@ -85,9 +85,13 @@ export default function VocabularyFlashcardsPage() {
         <p className="text-lg text-muted-foreground mb-6">Click on the card to flip it and see the answer</p>
 
         <Tabs defaultValue="all" value={jlptLevel} onValueChange={setJlptLevel} className="w-full max-w-md mx-auto">
-          <TabsList className="grid grid-cols-2">
+          <TabsList className="flex flex-wrap justify-center gap-1">
             <TabsTrigger value="all">All</TabsTrigger>
-            <TabsTrigger value="N5">JLPT N5</TabsTrigger>
+            <TabsTrigger value="N5">N5</TabsTrigger>
+            <TabsTrigger value="N4">N4</TabsTrigger>
+            <TabsTrigger value="N3">N3</TabsTrigger>
+            <TabsTrigger value="N2">N2</TabsTrigger>
+            <TabsTrigger value="N1">N1</TabsTrigger>
           </TabsList>
         </Tabs>
       </div>
@@ -107,12 +111,15 @@ export default function VocabularyFlashcardsPage() {
               ) : (
                 <div>
                   <p className="text-2xl font-medium mb-2">{currentCard.meaning}</p>
-                  <p className="text-lg mb-2">{currentCard.romaji}</p>
-                  <p className="text-sm mb-2">Part of speech: {currentCard.part_of_speech}</p>
+                  {currentCard.romaji && <p className="text-lg mb-2">{currentCard.romaji}</p>}
+                  {currentCard.part_of_speech && (
+                    <p className="text-sm mb-2">Part of speech: {currentCard.part_of_speech}</p>
+                  )}
+                  {jlptLevel === "all" && <p className="text-sm mb-2">JLPT Level: {currentCard.jlpt_level}</p>}
                   {currentCard.example && (
                     <div className="mt-2 text-sm">
                       <p>{currentCard.example}</p>
-                      <p>{currentCard.example_meaning}</p>
+                      {currentCard.example_meaning && <p>{currentCard.example_meaning}</p>}
                     </div>
                   )}
                 </div>

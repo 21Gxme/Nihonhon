@@ -40,6 +40,39 @@ export default function KanjiFlashcardsPage() {
 
   const currentCard = filteredKanji[currentIndex]
 
+  // Format readings to use commas instead of semicolons
+  const formatReading = (reading: string) => {
+    if (!reading) return ""
+    return reading
+      .split(";")
+      .map((part) => part.trim())
+      .join(", ")
+  }
+
+  // Parse romaji into ON and KUN groups
+  const parseRomaji = (romaji: string) => {
+    if (!romaji) return { onReadings: [], kunReadings: [] }
+
+    const onReadings: string[] = []
+    const kunReadings: string[] = []
+
+    // Split by semicolons and process each part
+    const parts = romaji.split(";").map((part) => part.trim())
+
+    parts.forEach((part) => {
+      // Extract the reading without the (ON) or (KUN) label
+      if (part.includes("(ON)")) {
+        const reading = part.substring(0, part.indexOf("(ON)")).trim()
+        onReadings.push(reading)
+      } else if (part.includes("(KUN)")) {
+        const reading = part.substring(0, part.indexOf("(KUN)")).trim()
+        kunReadings.push(reading)
+      }
+    })
+
+    return { onReadings, kunReadings }
+  }
+
   const handleNext = () => {
     setFlipped(false)
     setCurrentIndex((prevIndex) => (prevIndex === filteredKanji.length - 1 ? 0 : prevIndex + 1))
@@ -77,37 +110,80 @@ export default function KanjiFlashcardsPage() {
     )
   }
 
+  const { onReadings, kunReadings } = parseRomaji(currentCard.romaji || "")
+
   return (
     <div className="container mx-auto px-4 py-8">
       <div className="text-center mb-8">
         <h1 className="text-3xl font-bold tracking-tight mb-4">Kanji Flashcards</h1>
         <p className="text-lg text-muted-foreground mb-6">Click on the card to flip it and see the answer</p>
 
+        <Tabs defaultValue="all" value={jlptLevel} onValueChange={setJlptLevel} className="w-full max-w-md mx-auto">
+          <TabsList className="flex flex-wrap justify-center gap-1">
+            <TabsTrigger value="all">All</TabsTrigger>
+            <TabsTrigger value="N5">N5</TabsTrigger>
+            <TabsTrigger value="N4">N4</TabsTrigger>
+            <TabsTrigger value="N3">N3</TabsTrigger>
+            <TabsTrigger value="N2">N2</TabsTrigger>
+            <TabsTrigger value="N1">N1</TabsTrigger>
+          </TabsList>
+        </Tabs>
       </div>
 
       <div className="max-w-md mx-auto mb-8">
         <Card
-          className={`h-64 cursor-pointer transition-all duration-500 ${flipped ? "bg-muted" : ""}`}
+          className="h-[400px] cursor-pointer transition-all duration-500 overflow-auto"
           onClick={() => setFlipped(!flipped)}
         >
           <CardContent className="flex items-center justify-center h-full p-6">
-            <div className="text-center">
+            <div className="text-center w-full">
               {!flipped ? (
-                <div className="text-7xl font-bold">{currentCard.character}</div>
+                <div className="text-7xl font-bold flex items-center justify-center h-full">
+                  {currentCard.character}
+                </div>
               ) : (
-                <div>
-                  <p className="text-2xl font-medium mb-2">{currentCard.meaning}</p>
-                  <div className="grid grid-cols-2 gap-4 mb-2">
+                <div className="space-y-4">
+                  <div className="text-6xl font-bold mb-4">{currentCard.character}</div>
+                  <div className="text-2xl font-medium mb-6">{currentCard.keyword || currentCard.meaning}</div>
+
+                  <div className="grid grid-cols-2 gap-4 text-left">
                     <div>
-                      <p className="text-sm font-medium">On Reading:</p>
-                      <p>{currentCard.on_reading}</p>
+                      <h4 className="font-medium text-sm">On Reading:</h4>
+                      <p>{formatReading(currentCard.on_reading)}</p>
                     </div>
+
                     <div>
-                      <p className="text-sm font-medium">Kun Reading:</p>
-                      <p>{currentCard.kun_reading}</p>
+                      <h4 className="font-medium text-sm">Kun Reading:</h4>
+                      <p>{formatReading(currentCard.kun_reading)}</p>
                     </div>
                   </div>
-                  {currentCard.example && <p className="text-sm mt-2">Example: {currentCard.example}</p>}
+
+                  {(onReadings.length > 0 || kunReadings.length > 0) && (
+                    <div className="text-left">
+                      <h4 className="font-medium text-sm">Romaji:</h4>
+                      <div className="pl-2 space-y-1">
+                        {onReadings.length > 0 && (
+                          <p>
+                            <span className="font-medium">ON:</span> {onReadings.join(", ")}
+                          </p>
+                        )}
+                        {kunReadings.length > 0 && (
+                          <p>
+                            <span className="font-medium">KUN:</span> {kunReadings.join(", ")}
+                          </p>
+                        )}
+                      </div>
+                    </div>
+                  )}
+
+                  <div className="grid grid-cols-2 gap-4 text-left">
+                    {jlptLevel === "all" && currentCard.jlpt_level && (
+                      <div>
+                        <h4 className="font-medium text-sm">JLPT Level:</h4>
+                        <p>{currentCard.jlpt_level}</p>
+                      </div>
+                    )}
+                  </div>
                 </div>
               )}
             </div>

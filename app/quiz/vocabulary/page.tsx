@@ -23,9 +23,20 @@ export default function VocabularyQuizPage() {
       options: string[]
       correctAnswer: string
       questionType: "meaning" | "reading"
+      jlptLevel: string
     }[]
   >([])
   const [quizType, setQuizType] = useState<"meaning" | "reading">("meaning")
+  const [jlptLevel, setJlptLevel] = useState<string>("all")
+
+  // Format string to replace semicolons with commas
+  const formatWithCommas = (text: string) => {
+    if (!text) return ""
+    return text
+      .split(";")
+      .map((part) => part.trim())
+      .join(", ")
+  }
 
   useEffect(() => {
     async function fetchData() {
@@ -36,7 +47,7 @@ export default function VocabularyQuizPage() {
 
         // Generate quiz questions
         if (data.length > 0) {
-          const questions = generateQuizQuestions(data, quizType)
+          const questions = generateQuizQuestions(data, quizType, jlptLevel)
           setQuizQuestions(questions)
         }
 
@@ -48,51 +59,62 @@ export default function VocabularyQuizPage() {
     }
 
     fetchData()
-  }, [quizType])
+  }, [quizType, jlptLevel])
 
-  const generateQuizQuestions = (data: Vocabulary[], type: "meaning" | "reading") => {
+  const generateQuizQuestions = (data: Vocabulary[], type: "meaning" | "reading", level: string) => {
+    // Filter by JLPT level if needed
+    const filteredData = level === "all" ? data : data.filter((item) => item.jlpt_level === level)
+
     // Shuffle the data
-    const shuffledData = [...data].sort(() => Math.random() - 0.5)
+    const shuffledData = [...filteredData].sort(() => Math.random() - 0.5)
 
-    // Take the first 10 items for the quiz
-    const quizItems = shuffledData.slice(0, 10)
+    // Take the first 10 items for the quiz (or less if not enough data)
+    const quizItems = shuffledData.slice(0, Math.min(10, shuffledData.length))
 
     return quizItems.map((item) => {
       if (type === "meaning") {
+        // Format meaning with commas instead of semicolons
+        const formattedMeaning = formatWithCommas(item.meaning)
+
         // Get 3 random incorrect options for meaning
         const incorrectOptions = shuffledData
           .filter((v) => v.meaning !== item.meaning)
           .sort(() => Math.random() - 0.5)
           .slice(0, 3)
-          .map((v) => v.meaning)
+          .map((v) => formatWithCommas(v.meaning))
 
         // Combine correct and incorrect options and shuffle
-        const options = [item.meaning, ...incorrectOptions].sort(() => Math.random() - 0.5)
+        const options = [formattedMeaning, ...incorrectOptions].sort(() => Math.random() - 0.5)
 
         return {
           word: item.word,
           kana: item.kana,
           options,
-          correctAnswer: item.meaning,
+          correctAnswer: formattedMeaning,
           questionType: "meaning" as const,
+          jlptLevel: item.jlpt_level,
         }
       } else {
+        // Format kana with commas instead of semicolons
+        const formattedKana = formatWithCommas(item.kana)
+
         // Get 3 random incorrect options for reading (using kana)
         const incorrectOptions = shuffledData
           .filter((v) => v.kana !== item.kana)
           .sort(() => Math.random() - 0.5)
           .slice(0, 3)
-          .map((v) => v.kana)
+          .map((v) => formatWithCommas(v.kana))
 
         // Combine correct and incorrect options and shuffle
-        const options = [item.kana, ...incorrectOptions].sort(() => Math.random() - 0.5)
+        const options = [formattedKana, ...incorrectOptions].sort(() => Math.random() - 0.5)
 
         return {
           word: item.word,
           kana: item.kana,
           options,
-          correctAnswer: item.kana,
+          correctAnswer: formattedKana,
           questionType: "reading" as const,
+          jlptLevel: item.jlpt_level,
         }
       }
     })
@@ -126,7 +148,7 @@ export default function VocabularyQuizPage() {
   const restartQuiz = () => {
     // Generate new questions
     if (vocabulary.length > 0) {
-      const questions = generateQuizQuestions(vocabulary, quizType)
+      const questions = generateQuizQuestions(vocabulary, quizType, jlptLevel)
       setQuizQuestions(questions)
     }
 
@@ -146,6 +168,15 @@ export default function VocabularyQuizPage() {
     setIsCorrect(null)
   }
 
+  const handleJlptLevelChange = (value: string) => {
+    setJlptLevel(value)
+    setCurrentQuestion(0)
+    setScore(0)
+    setShowResult(false)
+    setSelectedAnswer(null)
+    setIsCorrect(null)
+  }
+
   if (loading) {
     return (
       <div className="container mx-auto px-4 py-8 text-center">
@@ -157,7 +188,7 @@ export default function VocabularyQuizPage() {
   if (quizQuestions.length === 0) {
     return (
       <div className="container mx-auto px-4 py-8 text-center">
-        <p>No quiz questions available.</p>
+        <p>No quiz questions available for the selected JLPT level. Please try another level.</p>
       </div>
     )
   }
@@ -197,12 +228,25 @@ export default function VocabularyQuizPage() {
       <div className="text-center mb-8">
         <h1 className="text-3xl font-bold tracking-tight mb-4">Vocabulary Quiz</h1>
 
-        <Tabs defaultValue={quizType} onValueChange={handleQuizTypeChange} className="w-full max-w-md mx-auto mb-4">
-          <TabsList className="grid grid-cols-2">
-            <TabsTrigger value="meaning">Meaning Quiz</TabsTrigger>
-            <TabsTrigger value="reading">Reading Quiz</TabsTrigger>
-          </TabsList>
-        </Tabs>
+        <div className="flex flex-col gap-4 max-w-md mx-auto mb-4">
+          <Tabs defaultValue={quizType} onValueChange={handleQuizTypeChange} className="w-full">
+            <TabsList className="grid grid-cols-2">
+              <TabsTrigger value="meaning">Meaning Quiz</TabsTrigger>
+              <TabsTrigger value="reading">Reading Quiz</TabsTrigger>
+            </TabsList>
+          </Tabs>
+
+          <Tabs defaultValue={jlptLevel} onValueChange={handleJlptLevelChange} className="w-full">
+            <TabsList className="flex flex-wrap justify-center gap-1">
+              <TabsTrigger value="all">All</TabsTrigger>
+              <TabsTrigger value="N5">N5</TabsTrigger>
+              <TabsTrigger value="N4">N4</TabsTrigger>
+              <TabsTrigger value="N3">N3</TabsTrigger>
+              <TabsTrigger value="N2">N2</TabsTrigger>
+              <TabsTrigger value="N1">N1</TabsTrigger>
+            </TabsList>
+          </Tabs>
+        </div>
 
         <p className="text-lg text-muted-foreground">
           {quizType === "meaning"
@@ -225,7 +269,12 @@ export default function VocabularyQuizPage() {
           <CardContent className="flex items-center justify-center p-12">
             <div className="text-center">
               <div className="text-4xl font-bold mb-2">{currentQuiz.word}</div>
-              {quizType === "meaning" && <div className="text-xl">{currentQuiz.kana}</div>}
+              <div className="flex flex-col gap-1">
+                {quizType === "meaning" && <div className="text-xl">{currentQuiz.kana}</div>}
+                {jlptLevel === "all" && (
+                  <div className="text-sm text-muted-foreground">JLPT Level: {currentQuiz.jlptLevel}</div>
+                )}
+              </div>
             </div>
           </CardContent>
         </Card>
@@ -243,13 +292,13 @@ export default function VocabularyQuizPage() {
                     ? "default"
                     : "outline"
               }
-              className="h-12 text-lg justify-between"
+              className="h-auto min-h-12 text-lg justify-between py-2"
               onClick={() => handleAnswerClick(option)}
               disabled={selectedAnswer !== null}
             >
-              <span>{option}</span>
-              {selectedAnswer === option && isCorrect && <CheckCircle2 className="h-5 w-5" />}
-              {selectedAnswer === option && !isCorrect && <XCircle className="h-5 w-5" />}
+              <span className="text-left truncate max-w-[90%]">{option}</span>
+              {selectedAnswer === option && isCorrect && <CheckCircle2 className="h-5 w-5 flex-shrink-0 ml-2" />}
+              {selectedAnswer === option && !isCorrect && <XCircle className="h-5 w-5 flex-shrink-0 ml-2" />}
             </Button>
           ))}
         </div>

@@ -22,10 +22,46 @@ export default function KanjiQuizPage() {
       options: string[]
       correctAnswer: string
       questionType: "meaning" | "reading"
-      romaji: string
+      onReadings: string[]
+      kunReadings: string[]
+      jlptLevel: string
     }[]
   >([])
   const [quizType, setQuizType] = useState<"meaning" | "reading">("meaning")
+  const [jlptLevel, setJlptLevel] = useState<string>("all")
+
+  // Format string to use commas instead of semicolons
+  const formatWithCommas = (text: string) => {
+    if (!text) return ""
+    return text
+      .split(";")
+      .map((part) => part.trim())
+      .join(", ")
+  }
+
+  // Parse romaji into ON and KUN groups
+  const parseRomaji = (romaji: string) => {
+    if (!romaji) return { onReadings: [], kunReadings: [] }
+
+    const onReadings: string[] = []
+    const kunReadings: string[] = []
+
+    // Split by semicolons and process each part
+    const parts = romaji.split(";").map((part) => part.trim())
+
+    parts.forEach((part) => {
+      // Extract the reading without the (ON) or (KUN) label
+      if (part.includes("(ON)")) {
+        const reading = part.substring(0, part.indexOf("(ON)")).trim()
+        onReadings.push(reading)
+      } else if (part.includes("(KUN)")) {
+        const reading = part.substring(0, part.indexOf("(KUN)")).trim()
+        kunReadings.push(reading)
+      }
+    })
+
+    return { onReadings, kunReadings }
+  }
 
   useEffect(() => {
     async function fetchData() {
@@ -36,7 +72,7 @@ export default function KanjiQuizPage() {
 
         // Generate quiz questions
         if (data.length > 0) {
-          const questions = generateQuizQuestions(data, quizType)
+          const questions = generateQuizQuestions(data, quizType, jlptLevel)
           setQuizQuestions(questions)
         }
 
@@ -48,51 +84,67 @@ export default function KanjiQuizPage() {
     }
 
     fetchData()
-  }, [quizType])
+  }, [quizType, jlptLevel])
 
-  const generateQuizQuestions = (data: Kanji[], type: "meaning" | "reading") => {
+  const generateQuizQuestions = (data: Kanji[], type: "meaning" | "reading", level: string) => {
+    // Filter by JLPT level if needed
+    const filteredData = level === "all" ? data : data.filter((item) => item.jlpt_level === level)
+
     // Shuffle the data
-    const shuffledData = [...data].sort(() => Math.random() - 0.5)
+    const shuffledData = [...filteredData].sort(() => Math.random() - 0.5)
 
-    // Take the first 10 items for the quiz
-    const quizItems = shuffledData.slice(0, 10)
+    // Take the first 10 items for the quiz (or less if not enough data)
+    const quizItems = shuffledData.slice(0, Math.min(10, shuffledData.length))
 
     return quizItems.map((item) => {
+      // Parse romaji into ON and KUN readings
+      const { onReadings, kunReadings } = parseRomaji(item.romaji || "")
+
       if (type === "meaning") {
+        // Format meaning with commas instead of semicolons
+        const meaning = formatWithCommas(item.keyword || item.meaning || "")
+
         // Get 3 random incorrect options for meaning
         const incorrectOptions = shuffledData
-          .filter((k) => k.meaning !== item.meaning)
+          .filter((k) => (k.keyword || k.meaning) !== (item.keyword || item.meaning))
           .sort(() => Math.random() - 0.5)
           .slice(0, 3)
-          .map((k) => k.meaning)
+          .map((k) => formatWithCommas(k.keyword || k.meaning || ""))
 
         // Combine correct and incorrect options and shuffle
-        const options = [item.meaning, ...incorrectOptions].sort(() => Math.random() - 0.5)
+        const options = [meaning, ...incorrectOptions].sort(() => Math.random() - 0.5)
 
         return {
           character: item.character,
           options,
-          correctAnswer: item.meaning,
+          correctAnswer: meaning,
           questionType: "meaning" as const,
-          romaji: item.romaji, // Add this line to include romaji
+          onReadings,
+          kunReadings,
+          jlptLevel: item.jlpt_level,
         }
       } else {
-        // Get 3 random incorrect options for reading (using on_reading)
+        // Just use the on_reading with commas for reading quiz
+        const formattedReading = formatWithCommas(item.on_reading)
+
+        // Get 3 random incorrect options for reading
         const incorrectOptions = shuffledData
           .filter((k) => k.on_reading !== item.on_reading)
           .sort(() => Math.random() - 0.5)
           .slice(0, 3)
-          .map((k) => k.on_reading)
+          .map((k) => formatWithCommas(k.on_reading))
 
         // Combine correct and incorrect options and shuffle
-        const options = [item.on_reading, ...incorrectOptions].sort(() => Math.random() - 0.5)
+        const options = [formattedReading, ...incorrectOptions].sort(() => Math.random() - 0.5)
 
         return {
           character: item.character,
           options,
-          correctAnswer: item.on_reading,
+          correctAnswer: formattedReading,
           questionType: "reading" as const,
-          romaji: item.romaji, // Add this line to include romaji
+          onReadings,
+          kunReadings,
+          jlptLevel: item.jlpt_level,
         }
       }
     })
@@ -126,7 +178,7 @@ export default function KanjiQuizPage() {
   const restartQuiz = () => {
     // Generate new questions
     if (kanji.length > 0) {
-      const questions = generateQuizQuestions(kanji, quizType)
+      const questions = generateQuizQuestions(kanji, quizType, jlptLevel)
       setQuizQuestions(questions)
     }
 
@@ -146,6 +198,15 @@ export default function KanjiQuizPage() {
     setIsCorrect(null)
   }
 
+  const handleJlptLevelChange = (value: string) => {
+    setJlptLevel(value)
+    setCurrentQuestion(0)
+    setScore(0)
+    setShowResult(false)
+    setSelectedAnswer(null)
+    setIsCorrect(null)
+  }
+
   if (loading) {
     return (
       <div className="container mx-auto px-4 py-8 text-center">
@@ -157,7 +218,7 @@ export default function KanjiQuizPage() {
   if (quizQuestions.length === 0) {
     return (
       <div className="container mx-auto px-4 py-8 text-center">
-        <p>No quiz questions available.</p>
+        <p>No quiz questions available for the selected JLPT level. Please try another level.</p>
       </div>
     )
   }
@@ -197,12 +258,25 @@ export default function KanjiQuizPage() {
       <div className="text-center mb-8">
         <h1 className="text-3xl font-bold tracking-tight mb-4">Kanji Quiz</h1>
 
-        <Tabs defaultValue={quizType} onValueChange={handleQuizTypeChange} className="w-full max-w-md mx-auto mb-4">
-          <TabsList className="grid grid-cols-2">
-            <TabsTrigger value="meaning">Meaning Quiz</TabsTrigger>
-            <TabsTrigger value="reading">Reading Quiz</TabsTrigger>
-          </TabsList>
-        </Tabs>
+        <div className="flex flex-col gap-4 max-w-md mx-auto mb-4">
+          <Tabs defaultValue={quizType} onValueChange={handleQuizTypeChange} className="w-full">
+            <TabsList className="grid grid-cols-2">
+              <TabsTrigger value="meaning">Meaning Quiz</TabsTrigger>
+              <TabsTrigger value="reading">Reading Quiz</TabsTrigger>
+            </TabsList>
+          </Tabs>
+
+          <Tabs defaultValue={jlptLevel} onValueChange={handleJlptLevelChange} className="w-full">
+            <TabsList className="flex flex-wrap justify-center gap-1">
+              <TabsTrigger value="all">All</TabsTrigger>
+              <TabsTrigger value="N5">N5</TabsTrigger>
+              <TabsTrigger value="N4">N4</TabsTrigger>
+              <TabsTrigger value="N3">N3</TabsTrigger>
+              <TabsTrigger value="N2">N2</TabsTrigger>
+              <TabsTrigger value="N1">N1</TabsTrigger>
+            </TabsList>
+          </Tabs>
+        </div>
 
         <p className="text-lg text-muted-foreground">
           {quizType === "meaning"
@@ -222,10 +296,46 @@ export default function KanjiQuizPage() {
         <Progress value={(currentQuestion / quizQuestions.length) * 100} className="h-2 mb-6" />
 
         <Card className="mb-6">
-          <CardContent className="flex items-center justify-center p-12">
-            <div className="text-center">
-              <div className="text-8xl font-bold mb-2">{currentQuiz.character}</div>
-              {quizType === "meaning" && <div className="text-lg">{currentQuiz.romaji}</div>}
+          <CardContent className="flex items-center justify-center p-8">
+            <div className="text-center w-full">
+              <div className="text-8xl font-bold mb-4">{currentQuiz.character}</div>
+
+              <div className="space-y-2 text-left">
+                <div>
+                  <h4 className="font-medium text-sm">On Reading:</h4>
+                  <p>{formatWithCommas(kanji[currentQuestion]?.on_reading || "")}</p>
+                </div>
+
+                <div>
+                  <h4 className="font-medium text-sm">Kun Reading:</h4>
+                  <p>{formatWithCommas(kanji[currentQuestion]?.kun_reading || "")}</p>
+                </div>
+
+                {(currentQuiz.onReadings.length > 0 || currentQuiz.kunReadings.length > 0) && (
+                  <div>
+                    <h4 className="font-medium text-sm">Romaji:</h4>
+                    <div className="pl-2 space-y-1">
+                      {currentQuiz.onReadings.length > 0 && (
+                        <p>
+                          <span className="font-medium">ON:</span> {currentQuiz.onReadings.join(", ")}
+                        </p>
+                      )}
+                      {currentQuiz.kunReadings.length > 0 && (
+                        <p>
+                          <span className="font-medium">KUN:</span> {currentQuiz.kunReadings.join(", ")}
+                        </p>
+                      )}
+                    </div>
+                  </div>
+                )}
+
+                {jlptLevel === "all" && currentQuiz.jlptLevel && (
+                  <div>
+                    <h4 className="font-medium text-sm">JLPT Level:</h4>
+                    <p>{currentQuiz.jlptLevel}</p>
+                  </div>
+                )}
+              </div>
             </div>
           </CardContent>
         </Card>
@@ -243,13 +353,13 @@ export default function KanjiQuizPage() {
                     ? "default"
                     : "outline"
               }
-              className="h-12 text-lg justify-between"
+              className="h-auto min-h-12 text-lg justify-between py-2"
               onClick={() => handleAnswerClick(option)}
               disabled={selectedAnswer !== null}
             >
-              <span>{option}</span>
-              {selectedAnswer === option && isCorrect && <CheckCircle2 className="h-5 w-5" />}
-              {selectedAnswer === option && !isCorrect && <XCircle className="h-5 w-5" />}
+              <span className="text-left">{option}</span>
+              {selectedAnswer === option && isCorrect && <CheckCircle2 className="h-5 w-5 flex-shrink-0 ml-2" />}
+              {selectedAnswer === option && !isCorrect && <XCircle className="h-5 w-5 flex-shrink-0 ml-2" />}
             </Button>
           ))}
         </div>
