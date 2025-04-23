@@ -1,0 +1,116 @@
+character,romaji,meaning,example,on_reading,kun_reading,type,jlpt_level
+一,ichi,one,一つ (hitotsu) - one thing,イチ (ichi),ひと (hito),kanji,N5
+二,ni,two,二つ (futatsu) - two things,ニ (ni),ふた (futa),kanji,N5
+三,san,three,三つ (mittsu) - three things,サン (san),み (mi),kanji,N5
+四,shi/yon,four,四つ (yottsu) - four things,シ (shi),よ (yo),kanji,N5
+五,go,five,五つ (itsutsu) - five things,ゴ (go),いつ (itsu),kanji,N5
+六,roku,six,六日 (muika) - sixth day,ロク (roku),む (mu),kanji,N5
+七,shichi/nana,seven,七つ (nanatsu) - seven things,シチ (shichi),なな (nana),kanji,N5
+八,hachi,eight,八つ (yattsu) - eight things,ハチ (hachi),や (ya),kanji,N5
+九,kyuu/ku,nine,九つ (kokonotsu) - nine things,キュウ (kyuu),ここの (kokono),kanji,N5
+十,juu,ten,十日 (tooka) - tenth day,ジュウ (juu),とお (too),kanji,N5
+百,hyaku,hundred,百円 (hyaku-en) - 100 yen,ヒャク (hyaku),もも (momo),kanji,N5
+千,sen,thousand,千円 (sen-en) - 1000 yen,セン (sen),ち (chi),kanji,N5
+万,man,ten thousand,"一万円 (ichiman-en) - 10,000 yen",マン (man),よろず (yorozu),kanji,N5
+日,nichi/hi,"day, sun",日曜日 (nichiyoubi) - Sunday,"ニチ (nichi), ジツ (jitsu)","ひ (hi), か (ka)",kanji,N5
+月,getsu/tsuki,"month, moon",月曜日 (getsuyoubi) - Monday,"ゲツ (getsu), ガツ (gatsu)",つき (tsuki),kanji,N5
+火,ka/hi,fire,火曜日 (kayoubi) - Tuesday,カ (ka),ひ (hi),kanji,N5
+水,sui/mizu,water,水曜日 (suiyoubi) - Wednesday,スイ (sui),みず (mizu),kanji,N5
+木,moku/ki,"tree, wood",木曜日 (mokuyoubi) - Thursday,"モク (moku), ボク (boku)",き (ki),kanji,N5
+金,kin/kane,"gold, money",金曜日 (kinyoubi) - Friday,"キン (kin), コン (kon)",かね (kane),kanji,N5
+土,do/tsuchi,"earth, soil",土曜日 (doyoubi) - Saturday,"ド (do), ト (to)",つち (tsuchi),kanji,N5
+曜,you,day of the week,月曜日 (getsuyoubi) - Monday,ヨウ (you),,kanji,N5
+年,nen/toshi,year,今年 (kotoshi) - this year,ネン (nen),とし (toshi),kanji,N5
+今,kon/ima,now,今日 (kyou) - today,"コン (kon), キン (kin)",いま (ima),kanji,N5
+分,fun/bun/wa,"minute, part",五分 (go-fun) - 5 minutes,"ブン (bun), フン (fun)",わ(ける) (wa(keru)),kanji,N5
+時,ji/toki,"time, hour",時間 (jikan) - time,ジ (ji),とき (toki),kanji,N5
+間,kan/aida,"interval, space",時間 (jikan) - time,"カン (kan), ケン (ken)",あいだ (aida),kanji,N5
+週,shuu,week,今週 (konshuu) - this week,シュウ (shuu),,kanji,N5
+先,sen/saki,"previous, ahead",先生 (sensei) - teacher,セン (sen),さき (saki),kanji,N5
+午,go,noon,午後 (gogo) - afternoon,ゴ (go),,kanji,N5
+前,zen/mae,"before, in front",名前 (namae) - name,ゼン (zen),まえ (mae),kanji,N5
+後,go/ato,"after, behind",午後 (gogo) - afternoon,"ゴ (go), コウ (kou)","あと (ato), うし(ろ) (ushi(ro))",kanji,N5
+朝,chou/asa,morning,今朝 (kesa) - this morning,チョウ (chou),あさ (asa),kanji,N5
+晩,ban,evening,今晩 (konban) - this evening,バン (ban),,kanji,N5
+人,jin/hito,person,日本人 (nihonjin) - Japanese person,"ジン (jin), ニン (nin)",ひと (hito),kanji,N5
+男,dan/otoko,"man, male",男の子 (otokonoko) - boy,"ダン (dan), ナン (nan)",おとこ (otoko),kanji,N5
+女,jo/onna,"woman, female",女の子 (onnanoko) - girl,"ジョ (jo), ニョ (nyo)",おんな (onna),kanji,N5
+子,shi/ko,child,女の子 (onnanoko) - girl,"シ (shi), ス (su)",こ (ko),kanji,N5
+父,fu/chichi,father,お父さん (otousan) - father,フ (fu),ちち (chichi),kanji,N5
+母,bo/haha,mother,お母さん (okaasan) - mother,ボ (bo),はは (haha),kanji,N5
+友,yuu/tomo,friend,友達 (tomodachi) - friend,ユウ (yuu),とも (tomo),kanji,N5
+名,mei/na,name,名前 (namae) - name,"メイ (mei), ミョウ (myou)",な (na),kanji,N5
+生,sei/i/u,"life, birth",先生 (sensei) - teacher,"セイ (sei), ショウ (shou)","い(きる) (i(kiru)), う(まれる) (u(mareru))",kanji,N5
+国,koku/kuni,country,外国 (gaikoku) - foreign country,コク (koku),くに (kuni),kanji,N5
+外,gai/soto,outside,外国人 (gaikokujin) - foreigner,"ガイ (gai), ゲ (ge)","そと (soto), ほか (hoka)",kanji,N5
+学,gaku/mana,"study, learning",大学 (daigaku) - university,ガク (gaku),まな(ぶ) (mana(bu)),kanji,N5
+校,kou,school,学校 (gakkou) - school,コウ (kou),,kanji,N5
+山,san/yama,mountain,富士山 (fujisan) - Mt. Fuji,サン (san),やま (yama),kanji,N5
+川,sen/kawa,river,川の水 (kawa no mizu) - river water,セン (sen),かわ (kawa),kanji,N5
+田,den/ta,rice field,田中 (tanaka) - common surname,デン (den),た (ta),kanji,N5
+町,chou/machi,town,町内 (chouai) - neighborhood,チョウ (chou),まち (machi),kanji,N5
+家,ka/ie,"house, home",家族 (kazoku) - family,"カ (ka), ケ (ke)","いえ (ie), や (ya)",kanji,N5
+店,ten/mise,"store, shop",喫茶店 (kissaten) - coffee shop,テン (ten),みせ (mise),kanji,N5
+駅,eki,station,駅前 (ekimae) - in front of the station,エキ (eki),,kanji,N5
+道,dou/michi,"road, way",道路 (douro) - road,"ドウ (dou), トウ (tou)",みち (michi),kanji,N5
+車,sha/kuruma,"car, vehicle",電車 (densha) - train,シャ (sha),くるま (kuruma),kanji,N5
+上,jou/ue,"up, above",上手 (jouzu) - skillful,"ジョウ (jou), ショウ (shou)","うえ (ue), あ(げる) (a(geru))",kanji,N5
+下,ka/ge/shita,"down, below",下手 (heta) - unskillful,"カ (ka), ゲ (ge)","した (shita), さ(げる) (sa(geru))",kanji,N5
+中,chuu/naka,"middle, inside",中国 (chuugoku) - China,チュウ (chuu),なか (naka),kanji,N5
+右,u/migi,right,右側 (migigawa) - right side,"ウ (u), ユウ (yuu)",みぎ (migi),kanji,N5
+左,sa/hidari,left,左側 (hidarigawa) - left side,サ (sa),ひだり (hidari),kanji,N5
+東,tou/higashi,east,東京 (toukyou) - Tokyo,トウ (tou),ひがし (higashi),kanji,N5
+西,sei/nishi,west,西口 (nishiguchi) - west exit,"セイ (sei), サイ (sai)",にし (nishi),kanji,N5
+南,nan/minami,south,南口 (minamiguchi) - south exit,ナン (nan),みなみ (minami),kanji,N5
+北,hoku/kita,north,北口 (kitaguchi) - north exit,ホク (hoku),きた (kita),kanji,N5
+行,kou/i/yu,go,旅行 (ryokou) - travel,"コウ (kou), ギョウ (gyou)","い(く) (i(ku)), ゆ(く) (yu(ku))",kanji,N5
+来,rai/ku,come,来月 (raigetsu) - next month,ライ (rai),く(る) (ku(ru)),kanji,N5
+見,ken/mi,see,見る (miru) - to see,ケン (ken),み(る) (mi(ru)),kanji,N5
+聞,bun/mon/ki,"hear, ask",聞く (kiku) - to listen,"ブン (bun), モン (mon)",き(く) (ki(ku)),kanji,N5
+読,doku/yo,read,読む (yomu) - to read,"ドク (doku), トク (toku)",よ(む) (yo(mu)),kanji,N5
+書,sho/ka,write,辞書 (jisho) - dictionary,ショ (sho),か(く) (ka(ku)),kanji,N5
+話,wa/hanashi,"talk, story",電話 (denwa) - telephone,ワ (wa),"はな(す) (hana(su)), はなし (hanashi)",kanji,N5
+食,shoku/ta,"eat, food",食べる (taberu) - to eat,"ショク (shoku), ジキ (jiki)",た(べる) (ta(beru)),kanji,N5
+飲,in/no,drink,飲む (nomu) - to drink,イン (in),の(む) (no(mu)),kanji,N5
+買,bai/ka,buy,買う (kau) - to buy,バイ (bai),か(う) (ka(u)),kanji,N5
+入,nyuu/hai/i,enter,入口 (iriguchi) - entrance,ニュウ (nyuu),"い(る) (i(ru)), はい(る) (hai(ru))",kanji,N5
+出,shutsu/de,"exit, leave",出口 (deguchi) - exit,"シュツ (shutsu), スイ (sui)",で(る) (de(ru)),kanji,N5
+立,ritsu/ta,stand,立つ (tatsu) - to stand,"リツ (ritsu), リュウ (ryuu)",た(つ) (ta(tsu)),kanji,N5
+休,kyuu/yasu,rest,休む (yasumu) - to rest,キュウ (kyuu),やす(む) (yasu(mu)),kanji,N5
+会,kai/a,meet,会社 (kaisha) - company,"カイ (kai), エ (e)",あ(う) (a(u)),kanji,N5
+帰,ki/kae,return,帰る (kaeru) - to return,キ (ki),かえ(る) (kae(ru)),kanji,N5
+開,kai/hira,open,開ける (akeru) - to open,カイ (kai),"ひら(く) (hira(ku)), あ(ける) (a(keru))",kanji,N5
+大,dai/tai/oo,"big, large",大きい (ookii) - big,"ダイ (dai), タイ (tai)",おお(きい) (oo(kii)),kanji,N5
+小,shou/chii/ko,small,小さい (chiisai) - small,ショウ (shou),"ちい(さい) (chii(sai)), こ (ko)",kanji,N5
+新,shin/atara,new,新しい (atarashii) - new,シン (shin),あたら(しい) (atara(shii)),kanji,N5
+古,ko/furu,old,古い (furui) - old (thing),コ (ko),ふる(い) (furu(i)),kanji,N5
+高,kou/taka,"high, expensive",高い (takai) - expensive/high,コウ (kou),たか(い) (taka(i)),kanji,N5
+安,an/yasu,"cheap, safe",安い (yasui) - cheap,アン (an),やす(い) (yasu(i)),kanji,N5
+長,chou/naga,long,長い (nagai) - long,チョウ (chou),なが(い) (naga(i)),kanji,N5
+白,haku/byaku/shiro,white,白い (shiroi) - white,"ハク (haku), ビャク (byaku)",しろ(い) (shiro(i)),kanji,N5
+赤,seki/shaku/aka,red,赤い (akai) - red,"セキ (seki), シャク (shaku)",あか(い) (aka(i)),kanji,N5
+青,sei/shou/ao,"blue, green",青い (aoi) - blue,"セイ (sei), ショウ (shou)",あお(い) (ao(i)),kanji,N5
+黒,koku/kuro,black,黒い (kuroi) - black,コク (koku),くろ(い) (kuro(i)),kanji,N5
+本,hon/moto,"book, origin",日本 (nihon) - Japan,ホン (hon),もと (moto),kanji,N5
+半,han/naka,half,半分 (hanbun) - half,ハン (han),なか(ば) (naka(ba)),kanji,N5
+電,den,electricity,電車 (densha) - train,デン (den),,kanji,N5
+語,go/kata,"language, word",日本語 (nihongo) - Japanese language,ゴ (go),かた(る) (kata(ru)),kanji,N5
+文,bun/mon/fumi,"text, writing",文字 (moji) - character,"ブン (bun), モン (mon)",ふみ (fumi),kanji,N5
+字,ji/aza,"character, letter",漢字 (kanji) - Chinese character,ジ (ji),あざ (aza),kanji,N5
+何,ka/nan/nani,what,何ですか (nan desu ka) - what is it?,カ (ka),"なに (nani), なん (nan)",kanji,N5
+毎,mai,every,毎日 (mainichi) - every day,マイ (mai),ごと (goto),kanji,N5
+私,shi/watashi,"I, private",私の本 (watashi no hon) - my book,シ (shi),"わたし (watashi), わたくし (watakushi)",kanji,N5
+空,kuu/sora,"sky, empty",空港 (kuukou) - airport,クウ (kuu),"そら (sora), あ(く) (a(ku)), から (kara)",kanji,N5
+雨,u/ame,rain,雨が降る (ame ga furu) - it's raining,ウ (u),あめ (ame),kanji,N5
+天,ten/ama,"heaven, sky",天気 (tenki) - weather,テン (ten),あま (ama),kanji,N5
+気,ki/ke,"spirit, mind",天気 (tenki) - weather,"キ (ki), ケ (ke)",,kanji,N5
+力,ryoku/riki/chikara,"power, strength",力強い (chikarazuyoi) - powerful,"リョク (ryoku), リキ (riki)",ちから (chikara),kanji,N5
+口,kou/kuchi,mouth,入口 (iriguchi) - entrance,"コウ (kou), ク (ku)",くち (kuchi),kanji,N5
+手,shu/te,hand,手紙 (tegami) - letter,シュ (shu),て (te),kanji,N5
+足,soku/ashi,"foot, leg",足りない (tarinai) - not enough,ソク (soku),"あし (ashi), た(りる) (ta(riru))",kanji,N5
+目,moku/me,eye,目が痛い (me ga itai) - my eyes hurt,モク (moku),め (me),kanji,N5
+耳,ji/mimi,ear,耳が痛い (mimi ga itai) - my ears hurt,ジ (ji),みみ (mimi),kanji,N5
+花,ka/hana,flower,花見 (hanami) - flower viewing,カ (ka),はな (hana),kanji,N5
+魚,gyo/uo/sakana,fish,魚を食べる (sakana wo taberu) - to eat fish,ギョ (gyo),"うお (uo), さかな (sakana)",kanji,N5
+犬,ken/inu,dog,犬が好き (inu ga suki) - I like dogs,ケン (ken),いぬ (inu),kanji,N5
+猫,byou/neko,cat,猫が好き (neko ga suki) - I like cats,ビョウ (byou),ねこ (neko),kanji,N5

@@ -1,0 +1,446 @@
+word,kana,romaji,meaning,part_of_speech,example,example_meaning,jlpt_level
+人,ひと,hito,person,noun,あの人は日本人です。,That person is Japanese.,N5
+日本,にほん,nihon,Japan,noun,日本に行きたいです。,I want to go to Japan.,N5
+学生,がくせい,gakusei,student,noun,私は学生です。,I am a student.,N5
+先生,せんせい,sensei,teacher,noun,田中先生は英語の先生です。,Mr. Tanaka is an English teacher.,N5
+大学,だいがく,daigaku,university,noun,東京大学は有名です。,Tokyo University is famous.,N5
+学校,がっこう,gakkou,school,noun,学校は9時に始まります。,School starts at 9 o'clock.,N5
+会社,かいしゃ,kaisha,company,noun,私の会社は駅の近くです。,My company is near the station.,N5
+家,いえ,ie,"house, home",noun,私の家は小さいです。,My house is small.,N5
+部屋,へや,heya,room,noun,この部屋はきれいです。,This room is clean.,N5
+車,くるま,kuruma,car,noun,新しい車を買いました。,I bought a new car.,N5
+電車,でんしゃ,densha,train,noun,電車で学校に行きます。,I go to school by train.,N5
+駅,えき,eki,station,noun,駅はどこですか。,Where is the station?,N5
+本,ほん,hon,book,noun,この本は面白いです。,This book is interesting.,N5
+雑誌,ざっし,zasshi,magazine,noun,雑誌を読みます。,I read magazines.,N5
+新聞,しんぶん,shinbun,newspaper,noun,毎朝新聞を読みます。,I read the newspaper every morning.,N5
+手紙,てがみ,tegami,letter,noun,友達に手紙を書きました。,I wrote a letter to my friend.,N5
+友達,ともだち,tomodachi,friend,noun,彼は私の友達です。,He is my friend.,N5
+家族,かぞく,kazoku,family,noun,私の家族は5人です。,My family has 5 people.,N5
+父,ちち,chichi,father,noun,父は医者です。,My father is a doctor.,N5
+母,はは,haha,mother,noun,母は料理が上手です。,My mother is good at cooking.,N5
+今日,きょう,kyou,today,noun,今日は晴れです。,Today is sunny.,N5
+明日,あした,ashita,tomorrow,noun,明日は雨です。,Tomorrow will be rainy.,N5
+昨日,きのう,kinou,yesterday,noun,昨日は忙しかったです。,Yesterday was busy.,N5
+今週,こんしゅう,konshuu,this week,noun,今週はテストがあります。,There is a test this week.,N5
+来週,らいしゅう,raishuu,next week,noun,来週日本に行きます。,I will go to Japan next week.,N5
+先週,せんしゅう,senshuu,last week,noun,先週京都に行きました。,I went to Kyoto last week.,N5
+行く,いく,iku,to go,verb,学校に行きます。,I go to school.,N5
+来る,くる,kuru,to come,verb,友達が来ました。,My friend came.,N5
+食べる,たべる,taberu,to eat,verb,朝ごはんを食べます。,I eat breakfast.,N5
+飲む,のむ,nomu,to drink,verb,水を飲みます。,I drink water.,N5
+見る,みる,miru,"to see, to watch",verb,テレビを見ます。,I watch TV.,N5
+聞く,きく,kiku,"to listen, to hear",verb,音楽を聞きます。,I listen to music.,N5
+話す,はなす,hanasu,"to speak, to talk",verb,日本語を話します。,I speak Japanese.,N5
+読む,よむ,yomu,to read,verb,本を読みます。,I read books.,N5
+書く,かく,kaku,to write,verb,手紙を書きます。,I write a letter.,N5
+買う,かう,kau,to buy,verb,新しい服を買いました。,I bought new clothes.,N5
+する,する,suru,to do,verb,宿題をします。,I do homework.,N5
+寝る,ねる,neru,to sleep,verb,11時に寝ます。,I sleep at 11 o'clock.,N5
+起きる,おきる,okiru,to wake up,verb,毎朝7時に起きます。,I wake up at 7 every morning.,N5
+働く,はたらく,hataraku,to work,verb,会社で働きます。,I work at a company.,N5
+休む,やすむ,yasumu,"to rest, to take a day off",verb,今日は休みます。,I will take a day off today.,N5
+大きい,おおきい,ookii,big,i-adjective,この部屋は大きいです。,This room is big.,N5
+小さい,ちいさい,chiisai,small,i-adjective,猫は小さいです。,The cat is small.,N5
+新しい,あたらしい,atarashii,new,i-adjective,新しい車を買いました。,I bought a new car.,N5
+古い,ふるい,furui,old (not for people),i-adjective,この建物は古いです。,This building is old.,N5
+高い,たかい,takai,"expensive, high",i-adjective,このカバンは高いです。,This bag is expensive.,N5
+安い,やすい,yasui,cheap,i-adjective,このレストランは安いです。,This restaurant is cheap.,N5
+いい,いい,ii,good,i-adjective,天気がいいです。,The weather is good.,N5
+悪い,わるい,warui,bad,i-adjective,気分が悪いです。,I feel bad.,N5
+忙しい,いそがしい,isogashii,busy,i-adjective,今週は忙しいです。,This week is busy.,N5
+暇,ひま,hima,free time,na-adjective,週末は暇です。,I'm free on weekends.,N5
+楽しい,たのしい,tanoshii,"fun, enjoyable",i-adjective,パーティーは楽しかったです。,The party was fun.,N5
+面白い,おもしろい,omoshiroi,interesting,i-adjective,この映画は面白いです。,This movie is interesting.,N5
+水,みず,mizu,water,noun,水を飲みます。,I drink water.,N5
+お茶,おちゃ,ocha,tea,noun,お茶が好きです。,I like tea.,N5
+コーヒー,コーヒー,koohii,coffee,noun,朝コーヒーを飲みます。,I drink coffee in the morning.,N5
+ご飯,ごはん,gohan,"rice, meal",noun,ご飯を食べます。,I eat rice.,N5
+朝ご飯,あさごはん,asagohan,breakfast,noun,朝ご飯を食べました。,I ate breakfast.,N5
+昼ご飯,ひるごはん,hirugohan,lunch,noun,昼ご飯を食べましょう。,Let's eat lunch.,N5
+晩ご飯,ばんごはん,bangohan,dinner,noun,晩ご飯は何ですか。,What's for dinner?,N5
+トイレ,トイレ,toire,toilet,noun,トイレはどこですか。,Where is the toilet?,N5
+銀行,ぎんこう,ginkou,bank,noun,銀行に行きます。,I go to the bank.,N5
+郵便局,ゆうびんきょく,yuubinkyoku,post office,noun,郵便局で切手を買います。,I buy stamps at the post office.,N5
+病院,びょういん,byouin,hospital,noun,病院に行きました。,I went to the hospital.,N5
+レストラン,レストラン,resutoran,restaurant,noun,レストランで食べます。,I eat at a restaurant.,N5
+店,みせ,mise,"shop, store",noun,この店は安いです。,This store is cheap.,N5
+一,いち,ichi,one,number,一人です。,It's one person.,N5
+二,に,ni,two,number,二人の友達,Two friends,N5
+三,さん,san,three,number,三冊の本,Three books,N5
+四,よん,yon,four,number,四時に起きます。,I wake up at 4 o'clock.,N5
+五,ご,go,five,number,五人家族です。,It's a family of five.,N5
+冊,さつ,satsu,counter for books,counter,本を二冊買いました。,I bought two books.,N5
+は,は,wa,topic marker,particle,私は学生です。,I am a student.,N5
+が,が,ga,subject marker,particle,雨が降っています。,It is raining.,N5
+を,を,o,object marker,particle,本を読みます。,I read a book.,N5
+に,に,ni,"time, place, direction, indirect object",particle,学校に行きます。,I go to school.,N5
+で,で,de,"location of action, means",particle,公園で遊びます。,I play in the park.,N5
+と,と,to,"with, and",particle,友達と話します。,I talk with my friend.,N5
+から,から,kara,from,particle,9時から働きます。,I work from 9 o'clock.,N5
+まで,まで,made,"until, to",particle,5時まで勉強します。,I study until 5 o'clock.,N5
+何,なに,nani,what,question word,これは何ですか。,What is this?,N5
+誰,だれ,dare,who,question word,あの人は誰ですか。,Who is that person?,N5
+どこ,どこ,doko,where,question word,トイレはどこですか。,Where is the toilet?,N5
+いつ,いつ,itsu,when,question word,いつ日本に行きますか。,When will you go to Japan?,N5
+どうして,どうして,doushite,why,question word,どうして遅れましたか。,Why were you late?,N5
+どう,どう,dou,how,question word,この料理はどうですか。,How is this dish?,N5
+私,わたし,watashi,I,pronoun,私は日本人です。,I am Japanese.,N5
+あなた,あなた,anata,you,pronoun,あなたは学生ですか。,Are you a student?,N5
+彼,かれ,kare,he,pronoun,彼は医者です。,He is a doctor.,N5
+彼女,かのじょ,kanojo,she,pronoun,彼女は先生です。,She is a teacher.,N5
+これ,これ,kore,this,pronoun,これは本です。,This is a book.,N5
+それ,それ,sore,that,pronoun,それは何ですか。,What is that?,N5
+あれ,あれ,are,that (over there),pronoun,あれは駅です。,That over there is the station.,N5
+とても,とても,totemo,very,adverb,とても寒いです。,It's very cold.,N5
+あまり,あまり,amari,not very (with negative),adverb,あまり好きじゃないです。,I don't like it very much.,N5
+全然,ぜんぜん,zenzen,not at all (with negative),adverb,全然分かりません。,I don't understand at all.,N5
+少し,すこし,sukoshi,a little,adverb,少し疲れています。,I'm a little tired.,N5
+たくさん,たくさん,takusan,"many, a lot",adverb,たくさん食べました。,I ate a lot.,N5
+時々,ときどき,tokidoki,sometimes,adverb,時々映画を見ます。,I sometimes watch movies.,N5
+よく,よく,yoku,often,adverb,よく公園に行きます。,I often go to the park.,N5
+いつも,いつも,itsumo,always,adverb,いつも7時に起きます。,I always wake up at 7.,N5
+また,また,mata,"again, also",adverb,また会いましょう。,Let's meet again.,N5
+もう,もう,mou,"already, anymore",adverb,もう食べました。,I already ate.,N5
+まだ,まだ,mada,"still, not yet",adverb,まだ来ていません。,He hasn't come yet.,N5
+すぐ,すぐ,sugu,immediately,adverb,すぐ行きます。,I'll go immediately.,N5
+一緒に,いっしょに,issho ni,together,adverb,一緒に食べましょう。,Let's eat together.,N5
+どうぞ,どうぞ,douzo,"please, go ahead",expression,どうぞ、お入りください。,Please come in.,N5
+ありがとう,ありがとう,arigatou,thank you,expression,ありがとうございます。,Thank you very much.,N5
+すみません,すみません,sumimasen,"excuse me, I'm sorry",expression,すみません、トイレはどこですか。,"Excuse me, where is the toilet?",N5
+はい,はい,hai,yes,expression,はい、そうです。,"Yes, that's right.",N5
+いいえ,いいえ,iie,no,expression,いいえ、違います。,"No, that's not right.",N5
+おはよう,おはよう,ohayou,good morning,expression,おはようございます。,Good morning.,N5
+こんにちは,こんにちは,konnichiwa,"hello, good afternoon",expression,こんにちは、元気ですか。,"Hello, how are you?",N5
+こんばんは,こんばんは,konbanwa,good evening,expression,こんばんは、お元気ですか。,"Good evening, how are you?",N5
+さようなら,さようなら,sayounara,goodbye,expression,さようなら、また明日。,"Goodbye, see you tomorrow.",N5
+おやすみ,おやすみ,oyasumi,good night,expression,おやすみなさい。,Good night.,N5
+ゲーム,ゲーム,geemu,game,noun,ゲームをします。,I play games.,N5
+バッテリー,バッテリー,batterii,battery,noun,バッテリーが切れました。,The battery ran out.,N5
+充電器,じゅうでんき,juudenki,charger,noun,充電器を使います。,I use a charger.,N5
+食べ物,たべもの,tabemono,food,noun,日本の食べ物が好きです。,I like Japanese food.,N5
+飲み物,のみもの,nomimono,"drink, beverage",noun,飲み物を買います。,I buy drinks.,N5
+パン,パン,pan,bread,noun,朝パンを食べます。,I eat bread in the morning.,N5
+肉,にく,niku,meat,noun,肉が好きです。,I like meat.,N5
+魚,さかな,sakana,fish,noun,魚を食べます。,I eat fish.,N5
+野菜,やさい,yasai,vegetable,noun,野菜を食べます。,I eat vegetables.,N5
+果物,くだもの,kudamono,fruit,noun,果物が好きです。,I like fruit.,N5
+りんご,りんご,ringo,apple,noun,りんごを食べます。,I eat an apple.,N5
+バナナ,バナナ,banana,banana,noun,バナナを食べます。,I eat a banana.,N5
+みかん,みかん,mikan,mandarin orange,noun,みかんを食べます。,I eat a mandarin orange.,N5
+いちご,いちご,ichigo,strawberry,noun,いちごが好きです。,I like strawberries.,N5
+卵,たまご,tamago,egg,noun,卵を食べます。,I eat eggs.,N5
+牛乳,ぎゅうにゅう,gyuunyuu,milk,noun,牛乳を飲みます。,I drink milk.,N5
+チーズ,チーズ,chiizu,cheese,noun,チーズが好きです。,I like cheese.,N5
+バター,バター,bataa,butter,noun,パンにバターを塗ります。,I spread butter on bread.,N5
+砂糖,さとう,satou,sugar,noun,コーヒーに砂糖を入れます。,I put sugar in coffee.,N5
+塩,しお,shio,salt,noun,塩を入れます。,I add salt.,N5
+醤油,しょうゆ,shouyu,soy sauce,noun,醤油をかけます。,I pour soy sauce.,N5
+味噌,みそ,miso,miso,noun,味噌汁を作ります。,I make miso soup.,N5
+紅茶,こうちゃ,koucha,black tea,noun,紅茶を飲みます。,I drink black tea.,N5
+ジュース,ジュース,juusu,juice,noun,オレンジジュースを飲みます。,I drink orange juice.,N5
+ビール,ビール,biiru,beer,noun,ビールを飲みます。,I drink beer.,N5
+お酒,おさけ,osake,alcohol,noun,お酒を飲みます。,I drink alcohol.,N5
+ワイン,ワイン,wain,wine,noun,ワインを飲みます。,I drink wine.,N5
+料理,りょうり,ryouri,"cooking, cuisine",noun,日本料理が好きです。,I like Japanese cuisine.,N5
+メニュー,メニュー,menyuu,menu,noun,メニューを見ます。,I look at the menu.,N5
+お弁当,おべんとう,obentou,boxed lunch,noun,お弁当を作ります。,I make a boxed lunch.,N5
+時間,じかん,jikan,time,noun,時間がありません。,I don't have time.,N5
+分,ふん,fun,minute,noun,5分待ってください。,Please wait 5 minutes.,N5
+秒,びょう,byou,second,noun,30秒で終わります。,It will end in 30 seconds.,N5
+今,いま,ima,now,noun,今何時ですか。,What time is it now?,N5
+明後日,あさって,asatte,day after tomorrow,noun,明後日東京に行きます。,I will go to Tokyo the day after tomorrow.,N5
+一昨日,おととい,ototoi,day before yesterday,noun,一昨日映画を見ました。,I watched a movie the day before yesterday.,N5
+今月,こんげつ,kongetsu,this month,noun,今月は忙しいです。,This month is busy.,N5
+来月,らいげつ,raigetsu,next month,noun,来月アメリカに行きます。,I will go to America next month.,N5
+先月,せんげつ,sengetsu,last month,noun,先月日本に行きました。,I went to Japan last month.,N5
+今年,ことし,kotoshi,this year,noun,今年は暑いです。,This year is hot.,N5
+来年,らいねん,rainen,next year,noun,来年大学に入ります。,I will enter university next year.,N5
+去年,きょねん,kyonen,last year,noun,去年日本に行きました。,I went to Japan last year.,N5
+朝,あさ,asa,morning,noun,朝ご飯を食べます。,I eat breakfast.,N5
+昼,ひる,hiru,"noon, daytime",noun,昼ご飯を食べます。,I eat lunch.,N5
+夜,よる,yoru,night,noun,夜勉強します。,I study at night.,N5
+晩,ばん,ban,evening,noun,晩ご飯を食べます。,I eat dinner.,N5
+午前,ごぜん,gozen,"morning, a.m.",noun,午前中に勉強します。,I study in the morning.,N5
+午後,ごご,gogo,"afternoon, p.m.",noun,午後映画を見ます。,I watch a movie in the afternoon.,N5
+日,ひ,hi,day,noun,今日は良い日です。,Today is a good day.,N5
+週,しゅう,shuu,week,noun,一週間休みます。,I will take a week off.,N5
+週末,しゅうまつ,shuumatsu,weekend,noun,週末何をしますか。,What will you do on the weekend?,N5
+月,つき,tsuki,month,noun,一ヶ月日本にいました。,I was in Japan for one month.,N5
+年,とし,toshi,year,noun,一年間勉強しました。,I studied for one year.,N5
+誕生日,たんじょうび,tanjoubi,birthday,noun,誕生日おめでとう。,Happy birthday.,N5
+休み,やすみ,yasumi,"holiday, day off",noun,明日は休みです。,Tomorrow is a day off.,N5
+春,はる,haru,spring,noun,春が好きです。,I like spring.,N5
+夏,なつ,natsu,summer,noun,夏は暑いです。,Summer is hot.,N5
+秋,あき,aki,"autumn, fall",noun,秋は涼しいです。,Autumn is cool.,N5
+冬,ふゆ,fuyu,winter,noun,冬は寒いです。,Winter is cold.,N5
+天気,てんき,tenki,weather,noun,今日の天気はどうですか。,How is the weather today?,N5
+晴れ,はれ,hare,sunny,noun,今日は晴れです。,Today is sunny.,N5
+雨,あめ,ame,rain,noun,雨が降っています。,It is raining.,N5
+雪,ゆき,yuki,snow,noun,雪が降っています。,It is snowing.,N5
+曇り,くもり,kumori,cloudy,noun,今日は曇りです。,Today is cloudy.,N5
+風,かぜ,kaze,wind,noun,風が強いです。,The wind is strong.,N5
+台風,たいふう,taifuu,typhoon,noun,台風が来ます。,A typhoon is coming.,N5
+暑い,あつい,atsui,hot (weather),i-adjective,今日は暑いです。,Today is hot.,N5
+寒い,さむい,samui,cold (weather),i-adjective,冬は寒いです。,Winter is cold.,N5
+涼しい,すずしい,suzushii,cool (weather),i-adjective,秋は涼しいです。,Autumn is cool.,N5
+暖かい,あたたかい,atatakai,warm,i-adjective,春は暖かいです。,Spring is warm.,N5
+六,ろく,roku,six,number,六時に起きます。,I wake up at 6 o'clock.,N5
+七,なな,nana,seven,number,七時に寝ます。,I go to sleep at 7 o'clock.,N5
+八,はち,hachi,eight,number,八時に学校に行きます。,I go to school at 8 o'clock.,N5
+九,きゅう,kyuu,nine,number,九時に授業が始まります。,Class starts at 9 o'clock.,N5
+十,じゅう,juu,ten,number,十冊の本,Ten books,N5
+百,ひゃく,hyaku,hundred,number,百円です。,It's 100 yen.,N5
+千,せん,sen,thousand,number,千円です。,It's 1000 yen.,N5
+万,まん,man,ten thousand,number,一万円です。,"It's 10,000 yen.",N5
+円,えん,en,yen,noun,百円です。,It's 100 yen.,N5
+枚,まい,mai,counter for flat objects,counter,写真を三枚撮りました。,I took three photos.,N5
+個,こ,ko,counter for small objects,counter,りんごを二個買いました。,I bought two apples.,N5
+杯,はい,hai,counter for cups,counter,コーヒーを一杯飲みました。,I drank one cup of coffee.,N5
+匹,ひき,hiki,counter for small animals,counter,猫を二匹飼っています。,I have two cats.,N5
+台,だい,dai,counter for machines,counter,車を一台持っています。,I have one car.,N5
+遊ぶ,あそぶ,asobu,"to play, to hang out",Verb (u-verb),週末に友達と遊びます。,I hang out with friends on weekends.
+教える,おしえる,oshieru,"to teach, to tell",Verb (ru-verb),先生は英語を教えます。,The teacher teaches English.
+歩く,あるく,aruku,to walk,Verb (u-verb),公園を歩きます。,I walk in the park.
+走る,はしる,hashiru,to run,Verb (u-verb),毎朝走ります。,I run every morning.
+泳ぐ,およぐ,oyogu,to swim,Verb (u-verb),夏は海で泳ぎます。,"In summer, I swim in the sea."
+止まる,とまる,tomaru,to stop,Verb (u-verb),バスが駅で止まります。,The bus stops at the station.
+曲がる,まがる,magaru,"to turn, to bend",Verb (u-verb),次の角を右に曲がってください。,Please turn right at the next corner.
+売る,うる,uru,to sell,Verb (u-verb),彼は車を売りました。,He sold his car.
+使う,つかう,tsukau,to use,Verb (u-verb),パソコンを使います。,I use a computer.
+笑う,わらう,warau,"to laugh, to smile",Verb (u-verb),彼女はよく笑います。,She laughs a lot.
+泣く,なく,naku,to cry,Verb (u-verb),赤ちゃんが泣いています。,The baby is crying.
+怒る,おこる,okoru,to get angry,Verb (u-verb),先生が怒りました。,The teacher got angry.
+喜ぶ,よろこぶ,yorokobu,"to be pleased, to be delighted",Verb (u-verb),彼はプレゼントを喜びました。,He was delighted with the present.
+疲れる,つかれる,tsukareru,to get tired,Verb (ru-verb),仕事で疲れました。,I got tired from work.
+公園,こうえん,kōen,park,Noun,週末に公園へ行きます。,I go to the park on weekends.
+動物園,どうぶつえん,dōbutsuen,zoo,Noun,子供たちは動物園が好きです。,Children like the zoo.
+美術館,びじゅつかん,bijutsukan,art museum,Noun,日曜日に美術館に行きました。,I went to the art museum on Sunday.
+図書館,としょかん,toshokan,library,Noun,図書館で本を借ります。,I borrow books from the library.
+博物館,はくぶつかん,hakubutsukan,museum,Noun,博物館で歴史について学びました。,I learned about history at the museum.
+バス,ばす,basu,bus,Noun,バスで学校に行きます。,I go to school by bus.
+自転車,じてんしゃ,jitensha,bicycle,Noun,自転車で買い物に行きます。,I go shopping by bicycle.
+飛行機,ひこうき,hikōki,airplane,Noun,飛行機で日本に行きました。,I went to Japan by airplane.
+船,ふね,fune,"ship, boat",Noun,船で島に行きます。,I go to the island by boat.
+服,ふく,fuku,clothes,Noun,新しい服を買いました。,I bought new clothes.
+靴,くつ,kutsu,shoes,Noun,この靴は快適です。,These shoes are comfortable.
+帽子,ぼうし,bōshi,"hat, cap",Noun,夏は帽子をかぶります。,I wear a hat in summer.
+眼鏡,めがね,megane,glasses,Noun,彼は眼鏡をかけています。,He wears glasses.
+傘,かさ,kasa,umbrella,Noun,雨が降っているので、傘を持っていきます。,"It's raining, so I'll take an umbrella."
+頭,あたま,atama,head,Noun,頭が痛いです。,I have a headache.
+目,め,me,eye,Noun,彼女は大きな目をしています。,She has big eyes.
+耳,みみ,mimi,ear,Noun,音楽を耳で聞きます。,I listen to music with my ears.
+口,くち,kuchi,mouth,Noun,口で食べ物を食べます。,I eat food with my mouth.
+手,て,te,hand,Noun,手で字を書きます。,I write with my hand.
+両親,りょうしん,ryōshin,parents,Noun,両親と一緒に住んでいます。,I live with my parents.
+兄弟,きょうだい,kyōdai,siblings,Noun,私には兄弟がいません。,I don't have any siblings.
+姉妹,しまい,shimai,sisters,Noun,彼女には姉妹がいます。,She has sisters.
+子供,こども,kodomo,"child, children",Noun,彼らには3人の子供がいます。,They have three children.
+良い,よい,yoi,good,i-adjective,これは良いアイデアです。,This is a good idea.
+元気,げんき,genki,"healthy, energetic",na-adjective,彼は元気です。,He is energetic.
+静か,しずか,shizuka,quiet,na-adjective,図書館は静かです。,The library is quiet.
+便利,べんり,benri,convenient,na-adjective,スマートフォンは便利です。,Smartphones are convenient.
+簡単,かんたん,kantan,"easy, simple",na-adjective,この問題は簡単です。,This problem is easy.
+複雑,ふくざつ,fukuzatsu,"complicated, complex",na-adjective,日本語の文法は複雑です。,Japanese grammar is complicated.
+ゆっくり,ゆっくり,yukkuri,slowly,Adverb,ゆっくり話してください。,Please speak slowly.
+そして,そして,soshite,"and, and then",Conjunction,朝ごはんを食べます。そして、学校に行きます。,"I eat breakfast. And then, I go to school."
+でも,でも,demo,"but, however",Conjunction,映画は面白かったです。でも、長かったです。,"The movie was interesting. But, it was long."
+または,または,matawa,or,Conjunction,バスまたは電車で行きます。,I'll go by bus or train.
+だから,だから,dakara,"so, therefore",Conjunction,雨が降っています。だから、傘を持っていきます。,"It's raining. So, I'll take an umbrella."
+けれども,けれども,keredomo,"although, though",Conjunction,高いですけれども、買います。,"Although it's expensive, I'll buy it."
+持つ,もつ,motsu,"to hold, to carry",Verb (u-verb),かばんを持ちます。,I carry a bag.
+出す,だす,dasu,"to take out, to submit",Verb (u-verb),宿題を出します。,I submit my homework.
+入れる,いれる,ireru,"to put in, to insert",Verb (ru-verb),砂糖をコーヒーに入れます。,I put sugar in my coffee.
+出る,でる,deru,"to leave, to exit",Verb (ru-verb),家を出ます。,I leave home.
+帰る,かえる,kaeru,"to return, to go home",Verb (u-verb),学校から帰ります。,I return from school.
+なる,なる,naru,to become,Verb (u-verb),医者になりたいです。,I want to become a doctor.
+分かる,わかる,wakaru,to understand,Verb (u-verb),日本語が分かります。,I understand Japanese.
+忘れる,わすれる,wasureru,to forget,Verb (ru-verb),名前を忘れました。,I forgot the name.
+kanji,kana,romaji,meaning,part_of_speech,example_ja,example_en
+教会,きょうかい,kyōkai,church,Noun,教会に行きます。,I go to church.
+寺,てら,tera,temple,Noun,寺で写真を撮ります。,I take pictures at the temple.
+神社,じんじゃ,jinja,shrine,Noun,神社にお参りします。,I visit the shrine.
+市場,いちば,ichiba,market,Noun,市場で野菜を買います。,I buy vegetables at the market.
+映画館,えいがかん,eigakan,movie theater,Noun,映画館で映画を見ます。,I watch movies at the movie theater.
+喫茶店,きっさてん,kissaten,café,Noun,喫茶店でコーヒーを飲みます。,I drink coffee at the café.
+上,うえ,ue,"up, above",Noun,本は机の上にあります。,The book is on top of the desk.
+下,した,shita,"down, below",Noun,猫は机の下にいます。,The cat is under the desk.
+前,まえ,mae,"front, before",Noun,駅の前で待ちます。,I wait in front of the station.
+後ろ,うしろ,ushiro,"behind, back",Noun,後ろを見てください。,Please look behind.
+中,なか,naka,"inside, middle",Noun,箱の中に何がありますか。,What is inside the box?
+外,そと,soto,outside,Noun,外は寒いです。,It's cold outside.
+右,みぎ,migi,right,Noun,右に曲がってください。,Please turn right.
+左,ひだり,hidari,left,Noun,左に曲がってください。,Please turn left.
+近く,ちかく,chikaku,"near, nearby",Noun,駅の近くに住んでいます。,I live near the station.
+遠く,とおく,tōku,"far, distant",Noun,学校は遠くです。,The school is far away.
+毎日,まいにち,mainichi,every day,Noun,毎日勉強します。,I study every day.
+毎週,まいしゅう,maishū,every week,Noun,毎週テストがあります。,There is a test every week.
+毎月,まいつき,maitsuki,every month,Noun,毎月お金を貯めます。,I save money every month.
+毎年,まいとし,maitoshi,every year,Noun,毎年旅行します。,I travel every year.
+一つ,ひとつ,hitotsu,one (thing),Noun,りんごを一つください。,Please give me one apple.
+二つ,ふたつ,futatsu,two (things),Noun,鉛筆を二つ買いました。,I bought two pencils.
+三つ,みっつ,mittsu,three (things),Noun,問題は三つあります。,There are three problems.
+四つ,よっつ,yottsu,four (things),Noun,部屋に窓が四つあります。,The room has four windows.
+五つ,いつつ,itsutsu,five (things),Noun,五つの選択肢があります。,There are five choices.
+六つ,むっつ,muttsu,six (things),Noun,六つのグループがあります。,There are six groups.
+七つ,ななつ,nanatsu,seven (things),Noun,七つの質問があります。,There are seven questions.
+八つ,やっつ,yattsu,eight (things),Noun,八つの部屋があります。,There are eight rooms.
+九つ,ここのつ,kokonotsu,nine (things),Noun,九つの例があります。,There are nine examples.
+授業,じゅぎょう,jugyō,"class, lesson",Noun,授業は9時に始まります。,Class starts at 9 o'clock.
+宿題,しゅくだい,shukudai,homework,Noun,宿題をしなければなりません。,I must do my homework.
+試験,しけん,shiken,"examination, test",Noun,来週試験があります。,There is a test next week.
+教室,きょうしつ,kyōshitsu,classroom,Noun,教室に入ります。,I enter the classroom.
+勉強,べんきょう,benkyō,study,Noun,毎日日本語を勉強します。,I study Japanese every day.
+生徒,せいと,seito,student,Noun,生徒は熱心です。,The student is diligent.
+教科書,きょうかしょ,kyōkasho,textbook,Noun,教科書を開きます。,I open the textbook.
+辞書,じしょ,jisho,dictionary,Noun,辞書で言葉を調べます。,I look up words in the dictionary.
+ノート,のーと,nōto,notebook,Noun,ノートを取ります。,I take notes.
+机,つくえ,tsukue,desk,Noun,机の上に本があります。,There is a book on the desk.
+椅子,いす,isu,chair,Noun,椅子に座ってください。,Please sit on the chair.
+電話,でんわ,denwa,telephone,Noun,電話をかけます。,I make a phone call.
+時計,とけい,tokei,"clock, watch",Noun,時計を見ます。,I look at the clock.
+鍵,かぎ,kagi,key,Noun,鍵を忘れました。,I forgot my key.
+冷蔵庫,れいぞうこ,reizōko,refrigerator,Noun,冷蔵庫に牛乳があります。,There is milk in the refrigerator.
+テレビ,てれび,terebi,television,Noun,テレビを見ます。,I watch television.
+ベッド,べっど,beddo,bed,Noun,ベッドで寝ます。,I sleep in bed.
+棚,たな,tana,shelf,Noun,本を棚に置きます。,I put the book on the shelf.
+鏡,かがみ,kagami,mirror,Noun,鏡を見ます。,I look in the mirror.
+赤,あか,aka,red,Noun,赤いりんごを買います。,I buy red apples.
+青,あお,ao,blue,Noun,空は青いです。,The sky is blue.
+黄色,きいろ,kiiro,yellow,Noun,黄色い花が咲いています。,Yellow flowers are blooming.
+白,しろ,shiro,white,Noun,白い紙を使います。,I use white paper.
+黒,くろ,kuro,black,Noun,黒い猫を見ました。,I saw a black cat.
+緑,みどり,midori,green,Noun,緑の葉が美しいです。,The green leaves are beautiful.
+茶色,ちゃいろ,chairo,brown,Noun,茶色の犬がいます。,There is a brown dog.
+紫,むらさき,murasaki,purple,Noun,紫の花が好きです。,I like purple flowers.
+灰色,はいいろ,haiiro,grey,Noun,灰色の雲が見えます。,I can see grey clouds.
+ピンク,ぴんく,pinku,pink,Noun,ピンクのドレスを着ます。,I wear a pink dress.
+開ける,あける,akeru,to open,Verb (ru-verb),窓を開けます。,I open the window.
+閉める,しめる,shimeru,to close,Verb (ru-verb),ドアを閉めてください。,Please close the door.
+押す,おす,osu,to push,Verb (u-verb),ボタンを押します。,I push the button.
+引く,ひく,hiku,to pull,Verb (u-verb),ドアを引いてください。,Please pull the door.
+投げる,なげる,nageru,to throw,Verb (ru-verb),ボールを投げます。,I throw the ball.
+落とす,おとす,otosu,to drop,Verb (u-verb),ペンを落としました。,I dropped my pen.
+拾う,ひろう,hirou,to pick up,Verb (u-verb),お金を拾いました。,I picked up some money.
+渡る,わたる,wataru,to cross,Verb (u-verb),道路を渡ります。,I cross the road.
+登る,のぼる,noboru,to climb,Verb (u-verb),山に登ります。,I climb the mountain.
+降りる,おりる,oriru,to get off,Verb (ru-verb),電車を降ります。,I get off the train.
+洗う,あらう,arau,to wash,Verb (u-verb),手を洗います。,I wash my hands.
+浴びる,あびる,abiru,to shower,Verb (ru-verb),シャワーを浴びます。,I take a shower.
+着る,きる,kiru,to wear (clothes),Verb (ru-verb),コートを着ます。,I wear a coat.
+脱ぐ,ぬぐ,nugu,to take off (clothes),Verb (u-verb),靴を脱ぎます。,I take off my shoes.
+磨く,みがく,migaku,"to brush, to polish",Verb (u-verb),歯を磨きます。,I brush my teeth.
+片付ける,かたづける,katazukeru,to tidy up,Verb (ru-verb),部屋を片付けます。,I tidy up the room.
+掃除する,そうじする,sōji suru,to clean,Verb (suru-verb),家を掃除します。,I clean the house.
+洗濯する,せんたくする,sentaku suru,to do laundry,Verb (suru-verb),服を洗濯します。,I do the laundry.
+料理する,りょうりする,ryōri suru,to cook,Verb (suru-verb),夕食を料理します。,I cook dinner.
+買い物する,かいものする,kaimono suru,to shop,Verb (suru-verb),スーパーで買い物します。,I shop at the supermarket.
+切る,きる,kiru,to cut,Verb,紙を切ります。,I cut the paper.
+作る,つくる,tsukuru,to make,Verb,料理を作ります。,I make food.
+始める,はじめる,hajimeru,to begin,Verb,仕事を始めます。,I start work.
+終わる,おわる,owaru,to end,Verb,授業が終わります。,The class ends.
+待つ,まつ,matsu,to wait,Verb,友達を待ちます。,I wait for my friend.
+急ぐ,いそぐ,isogu,to hurry,Verb,電車に急ぎます。,I hurry to the train.
+戻る,もどる,modoru,to return,Verb,家に戻ります。,I return home.
+通る,とおる,tooru,to pass through,Verb,道を通ります。,I pass through the street.
+乗る,のる,noru,to ride,Verb,電車に乗ります。,I ride the train.
+着く,つく,tsuku,to arrive,Verb,駅に着きます。,I arrive at the station.
+出発する,しゅっぱつする,shuppatsu suru,to depart,Verb,9時に出発します。,I depart at 9:00.
+到着する,とうちゃくする,touchaku suru,to arrive,Verb,3時に到着します。,I arrive at 3:00.
+入る,はいる,hairu,to enter,Verb,教室に入ります。,I enter the classroom.
+置く,おく,oku,to put,Verb,本を置きます。,I put the book.
+取る,とる,toru,to take,Verb,ペンを取ります。,I take the pen.
+捨てる,すてる,suteru,to throw away,Verb,ゴミを捨てます。,I throw away garbage.
+探す,さがす,sagasu,to search,Verb,鍵を探します。,I search for the key.
+見つける,みつける,mitsukeru,to find,Verb,財布を見つけます。,I find the wallet.
+無くす,なくす,nakusu,to lose,Verb,傘を無くします。,I lose the umbrella.
+壊す,こわす,kowasu,to break,Verb,コップを壊します。,I break the cup.
+直す,なおす,naosu,to fix,Verb,テレビを直します。,I fix the TV.
+変える,かえる,kaeru,to change,Verb,服を変えます。,I change clothes.
+決める,きめる,kimeru,to decide,Verb,予定を決めます。,I decide the schedule.
+比べる,くらべる,kuraberu,to compare,Verb,値段を比べます。,I compare prices.
+選ぶ,えらぶ,erabu,to choose,Verb,本を選びます。,I choose a book.
+集める,あつめる,atsumeru,to collect,Verb,切手を集めます。,I collect stamps.
+分ける,わける,wakeru,to divide,Verb,お金を分けます。,I divide the money.
+足りる,たりる,tariru,to be sufficient,Verb,お金が足ります。,The money is sufficient.
+要る,いる,iru,to need,Verb,ペンが要ります。,I need a pen.
+払う,はらう,harau,to pay,Verb,お金を払います。,I pay money.
+貸す,かす,kasu,to lend,Verb,本を貸します。,I lend a book.
+借りる,かりる,kariru,to borrow,Verb,傘を借ります。,I borrow an umbrella.
+返す,かえす,kaesu,to return,Verb,本を返します。,I return the book.
+交換する,こうかんする,koukan suru,to exchange,Verb,お金を交換します。,I exchange money.
+注文する,ちゅうもんする,chuumon suru,to order,Verb,食事を注文します。,I order food.
+予約する,よやくする,yoyaku suru,to reserve,Verb,席を予約します。,I reserve a seat.
+電話する,でんわする,denwa suru,to call,Verb,友達に電話します。,I call my friend.
+掛ける,かける,kakeru,to hang,Verb,電話を掛けます。,I make a phone call.
+切れる,きれる,kireru,to cut off,Verb,紐が切れます。,The string breaks.
+続く,つづく,tsuzuku,to continue,Verb,雨が続きます。,The rain continues.
+始まる,はじまる,hajimaru,to begin,Verb,映画が始まります。,The movie begins.
+開く,あく,aku,to open,Verb,ドアが開きます。,The door opens.
+閉まる,しまる,shimaru,to close,Verb,窓が閉まります。,The window closes.
+覚える,おぼえる,oboeru,to memorize,Verb,名前を覚えます。,I memorize names.
+習う,ならう,narau,to learn,Verb,先生に習います。,I learn from the teacher.
+練習する,れんしゅうする,renshuu suru,to practice,Verb,毎日練習します。,I practice every day.
+復習する,ふくしゅうする,fukushuu suru,to review,Verb,授業を復習します。,I review the lesson.
+勉強する,べんきょうする,benkyou suru,to study,Verb,図書館で勉強します。,I study at the library.
+考える,かんがえる,kangaeru,to think,Verb,将来を考えます。,I think about the future.
+思う,おもう,omou,to think,Verb,そう思います。,I think so.
+知る,しる,shiru,to know,Verb,名前を知っています。,I know the name.
+答える,こたえる,kotaeru,to answer,Verb,質問に答えます。,I answer the question.
+言う,いう,iu,to say,Verb,名前を言います。,I say my name.
+呼ぶ,よぶ,yobu,to call,Verb,友達を呼びます。,I call my friend.
+伝える,つたえる,tsutaeru,to convey,Verb,メッセージを伝えます。,I convey the message.
+会う,あう,au,to meet,Verb,友達に会います。,I meet my friend.
+送る,おくる,okuru,to send,Verb,荷物を送ります。,I send the luggage.
+迎える,むかえる,mukaeru,to welcome,Verb,駅で迎えます。,I welcome at the station.
+案内する,あんないする,annai suru,to guide,Verb,町を案内します。,I guide the town.
+説明する,せつめいする,setsumei suru,to explain,Verb,内容を説明します。,I explain the contents.
+紹介する,しょうかいする,shoukai suru,to introduce,Verb,友達を紹介します。,I introduce my friend.
+相談する,そうだんする,soudan suru,to consult,Verb,先生に相談します。,I consult the teacher.
+お願いする,おねがいする,onegai suru,to request,Verb,手伝いを願いします。,I request help.
+謝る,あやまる,ayamaru,to apologize,Verb,間違いを謝ります。,I apologize for the mistake.
+感謝する,かんしゃする,kansha suru,to thank,Verb,親切に感謝します。,I thank for the kindness.
+招待する,しょうたいする,shoutai suru,to invite,Verb,パーティーに招待します。,I invite to the party.
+手伝う,てつだう,tetsudau,to help,Verb,友達を手伝います。,I help my friend.
+助ける,たすける,tasukeru,to help,Verb,困っている人を助けます。,I help people in need.
+守る,まもる,mamoru,to protect,Verb,法律を守ります。,I protect the law.
+注意する,ちゅういする,chuui suru,to warn,Verb,健康に注意します。,I pay attention to health.
+褒める,ほめる,homeru,to praise,Verb,子供を褒めます。,I praise the child.
+叱る,しかる,shikaru,to scold,Verb,悪いことを叱ります。,I scold for bad things.
+慰める,なぐさめる,nagusameru,to comfort,Verb,悲しんでいる人を慰めます。,I comfort the sad person.
+励ます,はげます,hagemasu,to encourage,Verb,友達を励ます。,I encourage my friend.
+信じる,しんじる,shinjiru,to believe,Verb,神様を信じます。,I believe in God.
+疑う,うたがう,utagau,to doubt,Verb,友達を疑います。,I doubt my friend.
+約束する,やくそくする,yakusoku suru,to promise,Verb,明日会う約束をします。,I promise to meet tomorrow.
+破る,やぶる,yaburu,to break,Verb,約束を破ります。,I break the promise.
+警告する,けいこくする,keikoku suru,to warn,Verb,危険を警告します。,I warn of danger.
+禁止する,きんしする,kinshi suru,to prohibit,Verb,喫煙を禁止します。,I prohibit smoking.
+許可する,きょかする,kyoka suru,to permit,Verb,入場を許可します。,I permit entry.
+命令する,めいれいする,meirei suru,to order,Verb,部下に命令します。,I order subordinates.
+従う,したがう,shitagau,to obey,Verb,上司に従います。,I obey my boss.
+逆らう,さからう,sakarau,to disobey,Verb,命令に逆らいます。,I disobey the order.
+我慢する,がまんする,gaman suru,to endure,Verb,痛みを我慢します。,I endure the pain.
+諦める,あきらめる,akirameru,to give up,Verb,夢を諦めます。,I give up the dream.
+努力する,どりょくする,doryoku suru,to make an effort,Verb,毎日努力します。,I make an effort every day.
+頑張る,がんばる,ganbaru,to do one's best,Verb,試験に頑張ります。,I do my best on the exam.
+成功する,せいこうする,seikou suru,to succeed,Verb,試験に成功します。,I succeed in the exam.
+失敗する,しっぱいする,shippai suru,to fail,Verb,試験に失敗します。,I fail the exam.
+挑戦する,ちょうせんする,chousen suru,to challenge,Verb,新しい仕事に挑戦します。,I challenge a new job.
+続ける,つづける,tsuzukeru,to continue,Verb,勉強を続けます。,I continue studying.
+変わる,かわる,kawaru,to change,Verb,性格が変わります。,The personality changes.
+増える,ふえる,fueru,to increase,Verb,人口が増えます。,The population increases.
+減る,へる,heru,to decrease,Verb,体重が減ります。,The weight decreases.
+伸びる,のびる,nobiru,to grow,Verb,背が伸びます。,The height grows.
+縮む,ちぢむ,chijimu,to shrink,Verb,服が縮みます。,The clothes shrink.
+広がる,ひろがる,hirogaru,to spread,Verb,道が広がります。,The road widens.
+狭まる,せばまる,sebamaru,to narrow,Verb,道が狭まります。,The road narrows.
+強くなる,つよくなる,tsuyoku naru,to become strong,Verb,体が強くなります。,The body becomes strong.
+弱くなる,よわくなる,yowaku naru,to become weak,Verb,体が弱くなります。,The body becomes weak.
+重くなる,おもくなる,omoku naru,to become heavy,Verb,荷物が重くなります。,The luggage becomes heavy.
+軽くなる,かるくなる,karuku naru,to become light,Verb,荷物が軽くなります。,The luggage becomes light.
+高くなる,たかくなる,takaku naru,to become tall,Verb,値段が高くなります。,The price becomes high.
+低くなる,ひくくなる,hikuku naru,to become short,Verb,値段が低くなります。,The price becomes low.
+深くなる,ふかくなる,fukaku naru,to become deep,Verb,海が深くなります。,The sea becomes deep.
+浅くなる,あさくなる,asakaku naru,to become shallow,Verb,川が浅くなります。,The river becomes shallow.
+長くなる,ながくなる,nagaku naru,to become long,Verb,髪が長くなります。,The hair becomes long.
+短くなる,みじかくなる,mijika ku naru,to become short,Verb,髪が短くなります。,The hair becomes short.
