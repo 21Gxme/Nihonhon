@@ -13,24 +13,28 @@ export type HiraganaKatakana = {
 
 export type Kanji = {
   character: string
-  romaji: string
-  meaning: string
-  example: string
+  id?: number
+  keyword?: string
+  components?: string
   on_reading: string
   kun_reading: string
-  type: "kanji"
+  stroke_count?: number
   jlpt_level: string
+  romaji?: string
+  meaning?: string // Keep for backward compatibility
+  example?: string // Keep for backward compatibility
+  type: "kanji"
 }
 
 export type Vocabulary = {
   word: string
   kana: string
-  romaji: string
+  romanji: string // Updated field name from romaji to romanji
   meaning: string
-  part_of_speech: string
-  example: string
-  example_meaning: string
   jlpt_level: string
+  part_of_speech?: string // Now optional
+  example?: string // Now optional
+  example_meaning?: string // Now optional
 }
 
 export type JapaneseItem = HiraganaKatakana | Kanji | Vocabulary
@@ -83,12 +87,26 @@ export async function getKanji(): Promise<Kanji[]> {
     const records = parse(fileContent, {
       columns: true,
       skip_empty_lines: true,
+      relax_column_count: true,
     })
 
-    return records.map((record: any) => ({
-      ...record,
-      type: "kanji",
-    }))
+    return records.map((record: any) => {
+      // Handle the new CSV format
+      return {
+        character: record.kanji || record.character || "",
+        id: record.id ? Number.parseInt(record.id) : undefined,
+        keyword: record.keyword || record.meaning || "",
+        components: record.components || "",
+        on_reading: record.on_reading || "",
+        kun_reading: record.kun_reading || "",
+        stroke_count: record.stroke_count ? Number.parseInt(record.stroke_count) : undefined,
+        jlpt_level: record.jlpt || record.jlpt_level || "",
+        romaji: record.romaji || "",
+        meaning: record.keyword || record.meaning || "", // For backward compatibility
+        example: record.example || "",
+        type: "kanji",
+      }
+    })
   } catch (error) {
     console.error("Error loading kanji data:", error)
     return []
@@ -112,12 +130,12 @@ export async function getVocabulary(): Promise<Vocabulary[]> {
       return {
         word: record.word || "",
         kana: record.kana || "",
-        romaji: record.romaji || "",
+        romanji: record.romanji || "", // Updated field name from romaji to romanji
         meaning: record.meaning || "",
-        part_of_speech: record.part_of_speech || "",
-        example: record.example || "",
-        example_meaning: record.example_meaning || "",
         jlpt_level: record.jlpt_level || "N5",
+        part_of_speech: record.part_of_speech || "", // Now optional
+        example: record.example || "", // Now optional
+        example_meaning: record.example_meaning || "", // Now optional
       }
     })
   } catch (error) {
