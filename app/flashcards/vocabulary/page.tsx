@@ -4,8 +4,9 @@ import { useState, useEffect } from "react"
 import { Card, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { ChevronLeft, ChevronRight, RotateCcw, Shuffle } from "lucide-react"
+import { ChevronLeft, ChevronRight, RotateCcw, Shuffle, BookOpen, GraduationCap, Eye, EyeOff } from "lucide-react"
 import type { Vocabulary } from "@/lib/data"
+import { Toggle } from "@/components/ui/toggle"
 
 export default function VocabularyFlashcardsPage() {
   const [vocabulary, setVocabulary] = useState<Vocabulary[]>([])
@@ -13,6 +14,8 @@ export default function VocabularyFlashcardsPage() {
   const [flipped, setFlipped] = useState(false)
   const [loading, setLoading] = useState(true)
   const [jlptLevel, setJlptLevel] = useState("all")
+  const [showRomanji, setShowRomanji] = useState(true)
+  const [showKana, setShowKana] = useState(true)
 
   useEffect(() => {
     async function fetchData() {
@@ -41,6 +44,15 @@ export default function VocabularyFlashcardsPage() {
 
   const currentCard = filteredVocabulary[currentIndex]
 
+  // Format string to use commas instead of semicolons
+  const formatWithCommas = (text: string) => {
+    if (!text) return ""
+    return text
+      .split(";")
+      .map((part) => part.trim())
+      .join(" / ")
+  }
+
   const handleNext = () => {
     setFlipped(false)
     setCurrentIndex((prevIndex) => (prevIndex === filteredVocabulary.length - 1 ? 0 : prevIndex + 1))
@@ -62,6 +74,14 @@ export default function VocabularyFlashcardsPage() {
     setCurrentIndex(0)
   }
 
+  const toggleRomanji = () => {
+    setShowRomanji(!showRomanji)
+  }
+
+  const toggleKana = () => {
+    setShowKana(!showKana)
+  }
+
   if (loading) {
     return (
       <div className="container mx-auto px-4 py-8 text-center">
@@ -78,6 +98,24 @@ export default function VocabularyFlashcardsPage() {
     )
   }
 
+  // Get JLPT level color
+  const getJlptColor = (level: string) => {
+    switch (level) {
+      case "N1":
+        return "bg-red-100 text-red-800 dark:bg-red-950 dark:text-red-300"
+      case "N2":
+        return "bg-orange-100 text-orange-800 dark:bg-orange-950 dark:text-orange-300"
+      case "N3":
+        return "bg-yellow-100 text-yellow-800 dark:bg-yellow-950 dark:text-yellow-300"
+      case "N4":
+        return "bg-green-100 text-green-800 dark:bg-green-950 dark:text-green-300"
+      case "N5":
+        return "bg-blue-100 text-blue-800 dark:bg-blue-950 dark:text-blue-300"
+      default:
+        return "bg-gray-100 text-gray-800 dark:bg-gray-800 dark:text-gray-300"
+    }
+  }
+
   return (
     <div className="container mx-auto px-4 py-8">
       <div className="text-center mb-8">
@@ -87,39 +125,80 @@ export default function VocabularyFlashcardsPage() {
         <Tabs defaultValue="all" value={jlptLevel} onValueChange={setJlptLevel} className="w-full max-w-md mx-auto">
           <TabsList className="flex flex-wrap justify-center gap-1">
             <TabsTrigger value="all">All</TabsTrigger>
-            <TabsTrigger value="N5">N5</TabsTrigger>
-            <TabsTrigger value="N4">N4</TabsTrigger>
-            <TabsTrigger value="N3">N3</TabsTrigger>
-            <TabsTrigger value="N2">N2</TabsTrigger>
-            <TabsTrigger value="N1">N1</TabsTrigger>
+            <TabsTrigger value="N5">JLPT N5</TabsTrigger>
+            <TabsTrigger value="N4">JLPT N4</TabsTrigger>
+            <TabsTrigger value="N3">JLPT N3</TabsTrigger>
+            <TabsTrigger value="N2">JLPT N2</TabsTrigger>
+            <TabsTrigger value="N1">JLPT N1</TabsTrigger>
           </TabsList>
         </Tabs>
       </div>
 
-      <div className="max-w-md mx-auto mb-8">
+      <div className="max-w-md mx-auto mb-4">
+        <div className="flex justify-center gap-2 mb-4">
+          <Toggle
+            pressed={showKana}
+            onPressedChange={toggleKana}
+            aria-label="Toggle hiragana visibility"
+            className="flex gap-1 items-center"
+          >
+            {showKana ? <Eye className="h-4 w-4" /> : <EyeOff className="h-4 w-4" />}
+            Hiragana
+          </Toggle>
+          <Toggle
+            pressed={showRomanji}
+            onPressedChange={toggleRomanji}
+            aria-label="Toggle romanji visibility"
+            className="flex gap-1 items-center"
+          >
+            {showRomanji ? <Eye className="h-4 w-4" /> : <EyeOff className="h-4 w-4" />}
+            Romanji
+          </Toggle>
+        </div>
+
         <Card
-          className={`h-64 cursor-pointer transition-all duration-500 ${flipped ? "bg-muted" : ""}`}
+          className="h-[400px] cursor-pointer transition-all duration-500 overflow-hidden rounded-xl border shadow-sm"
           onClick={() => setFlipped(!flipped)}
         >
-          <CardContent className="flex items-center justify-center h-full p-6">
-            <div className="text-center">
-              {!flipped ? (
-                <div>
-                  <div className="text-4xl font-bold mb-2">{currentCard.word}</div>
-                  <div className="text-xl">{currentCard.kana}</div>
-                </div>
-              ) : (
-                <div>
-                  <p className="text-2xl font-medium mb-2">{currentCard.meaning}</p>
-                  {currentCard.romaji && <p className="text-lg mb-2">{currentCard.romaji}</p>}
-                  {currentCard.part_of_speech && (
-                    <p className="text-sm mb-2">Part of speech: {currentCard.part_of_speech}</p>
-                  )}
-                  {jlptLevel === "all" && <p className="text-sm mb-2">JLPT Level: {currentCard.jlpt_level}</p>}
-                  {currentCard.example && (
-                    <div className="mt-2 text-sm">
-                      <p>{currentCard.example}</p>
-                      {currentCard.example_meaning && <p>{currentCard.example_meaning}</p>}
+          <CardContent className="p-0 h-full flex flex-col">
+            {/* Top section with word, kana, and romanji - same in both states */}
+            <div className="flex-1 flex flex-col items-center justify-center p-6 pt-12">
+              <div className="text-5xl font-bold mb-4">{currentCard.word}</div>
+
+              {/* Conditionally show kana based on showKana state */}
+              {showKana && <div className="text-2xl mb-2">{currentCard.kana}</div>}
+
+              {/* Conditionally show romanji based on showRomanji state */}
+              {showRomanji && currentCard.romanji && (
+                <div className="text-xl text-muted-foreground">{formatWithCommas(currentCard.romanji)}</div>
+              )}
+            </div>
+
+            {/* Bottom section - shows meaning when flipped */}
+            <div className={`flex-1 border-t transition-all duration-300 ${flipped ? "opacity-100" : "opacity-0"}`}>
+              {flipped && (
+                <div className="p-6">
+                  <div className="flex items-start gap-4 mb-4">
+                    <BookOpen className="h-6 w-6 text-muted-foreground mt-1 flex-shrink-0" />
+                    <div>
+                      <h3 className="text-sm font-medium text-muted-foreground mb-1">Meaning</h3>
+                      <p className="text-xl font-medium">{currentCard.meaning}</p>
+                    </div>
+                  </div>
+
+                  {jlptLevel === "all" && (
+                    <div className="flex items-start gap-4 mt-4">
+                      <GraduationCap className="h-6 w-6 text-muted-foreground mt-1 flex-shrink-0" />
+                      <div>
+                        <h3 className="text-sm font-medium text-muted-foreground mb-1">JLPT Level</h3>
+                        <div
+                          className={`inline-block px-3 py-1 rounded-full text-sm font-medium ${getJlptColor(
+                            currentCard.jlpt_level,
+                          )}`}
+                        >
+                          {currentCard.jlpt_level}
+                        </div>
+                      </div>
                     </div>
                   )}
                 </div>
@@ -128,7 +207,7 @@ export default function VocabularyFlashcardsPage() {
           </CardContent>
         </Card>
 
-        <div className="text-center text-sm text-muted-foreground mt-2">
+        <div className="text-center text-sm text-muted-foreground mt-4">
           Card {currentIndex + 1} of {filteredVocabulary.length}
         </div>
 

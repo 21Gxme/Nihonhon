@@ -19,14 +19,19 @@ export const metadata: Metadata = {
 }
 
 export default async function KanjiPage({
+  params,
   searchParams,
 }: {
-  searchParams: { page?: string; level?: string; search?: string }
+  params: Promise<{}>
+  searchParams: Promise<{ page?: string; level?: string; search?: string }>
 }) {
-  // Get current page from query params or default to 1
-  const currentPage = Number(searchParams.page) || 1
-  const selectedLevel = searchParams.level || "all"
-  const searchQuery = searchParams.search || ""
+  // Await the searchParams Promise to get the actual values
+  const { page, level, search } = await searchParams
+
+  // Use the values
+  const currentPage = Number(page) || 1
+  const selectedLevel = level || "all"
+  const searchQuery = search || ""
 
   // Items per page
   const itemsPerPage = 48

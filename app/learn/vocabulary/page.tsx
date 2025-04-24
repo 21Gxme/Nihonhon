@@ -19,14 +19,19 @@ export const metadata: Metadata = {
 }
 
 export default async function VocabularyPage({
+  params,
   searchParams,
 }: {
-  searchParams: { page?: string; level?: string; search?: string }
+  params: Promise<{}>
+  searchParams: Promise<{ page?: string; level?: string; search?: string }>
 }) {
+  // Await the searchParams Promise to get the actual values
+  const { page, level, search } = await searchParams
+
   // Get current page from query params or default to 1
-  const currentPage = Number(searchParams.page) || 1
-  const selectedLevel = searchParams.level || "all"
-  const searchQuery = searchParams.search || ""
+  const currentPage = Number(page) || 1
+  const selectedLevel = level || "all"
+  const searchQuery = search || ""
 
   const itemsPerPage = 50
   // Get all vocabulary
@@ -43,7 +48,7 @@ export default async function VocabularyPage({
       return (
         vocab.word.toLowerCase().includes(query) ||
         vocab.kana.toLowerCase().includes(query) ||
-        (vocab.romaji || "").toLowerCase().includes(query) ||
+        (vocab.romanji || "").toLowerCase().includes(query) || // Updated field name
         vocab.meaning.toLowerCase().includes(query) ||
         (vocab.part_of_speech || "").toLowerCase().includes(query) ||
         (vocab.example || "").toLowerCase().includes(query) ||
@@ -72,6 +77,15 @@ export default async function VocabularyPage({
 
   for (let i = startPage; i <= endPage; i++) {
     pageNumbers.push(i)
+  }
+
+  // Format string to use commas instead of semicolons
+  const formatWithCommas = (text: string) => {
+    if (!text) return ""
+    return text
+      .split(";")
+      .map((part) => part.trim())
+      .join(", ")
   }
 
   return (
@@ -143,13 +157,13 @@ export default async function VocabularyPage({
                     <CardTitle className="flex flex-col">
                       <span className="text-2xl">{item.word}</span>
                       <span className="text-lg font-normal">
-                        {item.kana} {item.romaji && `(${item.romaji})`}
+                        {item.kana} {item.romanji && `(${formatWithCommas(item.romanji)})`}
                       </span>
                     </CardTitle>
                   </CardHeader>
                   <CardContent className="p-4 pt-0">
                     <CardDescription>
-                      <p className="font-medium mb-1">Meaning: {item.meaning}</p>
+                      <p className="font-bold mb-1">Meaning: {item.meaning}</p>
                       {item.part_of_speech && <p className="text-sm mb-1">Part of speech: {item.part_of_speech}</p>}
                       {item.jlpt_level && <p className="text-sm mb-1">JLPT Level: {item.jlpt_level}</p>}
                       {item.example && (

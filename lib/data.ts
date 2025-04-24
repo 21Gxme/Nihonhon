@@ -29,12 +29,12 @@ export type Kanji = {
 export type Vocabulary = {
   word: string
   kana: string
-  romaji: string
+  romanji: string // Updated field name from romaji to romanji
   meaning: string
-  part_of_speech: string
-  example: string
-  example_meaning: string
   jlpt_level: string
+  part_of_speech?: string // Now optional
+  example?: string // Now optional
+  example_meaning?: string // Now optional
 }
 
 export type JapaneseItem = HiraganaKatakana | Kanji | Vocabulary
@@ -130,12 +130,12 @@ export async function getVocabulary(): Promise<Vocabulary[]> {
       return {
         word: record.word || "",
         kana: record.kana || "",
-        romaji: record.romaji || "",
+        romanji: record.romanji || "", // Updated field name from romaji to romanji
         meaning: record.meaning || "",
-        part_of_speech: record.part_of_speech || "",
-        example: record.example || "",
-        example_meaning: record.example_meaning || "",
         jlpt_level: record.jlpt_level || "N5",
+        part_of_speech: record.part_of_speech || "", // Now optional
+        example: record.example || "", // Now optional
+        example_meaning: record.example_meaning || "", // Now optional
       }
     })
   } catch (error) {

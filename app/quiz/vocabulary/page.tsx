@@ -5,8 +5,9 @@ import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/componen
 import { Button } from "@/components/ui/button"
 import { Progress } from "@/components/ui/progress"
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import { Toggle } from "@/components/ui/toggle"
 import type { Vocabulary } from "@/lib/data"
-import { CheckCircle2, XCircle } from "lucide-react"
+import { CheckCircle2, XCircle, Eye, EyeOff } from "lucide-react"
 
 export default function VocabularyQuizPage() {
   const [vocabulary, setVocabulary] = useState<Vocabulary[]>([])
@@ -24,12 +25,32 @@ export default function VocabularyQuizPage() {
       correctAnswer: string
       questionType: "meaning" | "reading"
       jlptLevel: string
+      romanji: string
     }[]
   >([])
   const [quizType, setQuizType] = useState<"meaning" | "reading">("meaning")
   const [jlptLevel, setJlptLevel] = useState<string>("all")
+  const [showKana, setShowKana] = useState(true)
+  const [showRomanji, setShowRomanji] = useState(true)
 
-  // Format string to replace semicolons with commas
+  // Get counts for each JLPT level
+  const getJlptLevelCounts = () => {
+    const counts = {
+      N1: 0,
+      N2: 0,
+      N3: 0,
+      N4: 0,
+      N5: 0,
+    }
+    vocabulary.forEach((item) => {
+      if (counts.hasOwnProperty(item.jlpt_level)) {
+        counts[item.jlpt_level as keyof typeof counts]++
+      }
+    })
+    return counts
+  }
+
+  // Format string to use commas instead of semicolons
   const formatWithCommas = (text: string) => {
     if (!text) return ""
     return text
@@ -89,6 +110,7 @@ export default function VocabularyQuizPage() {
         return {
           word: item.word,
           kana: item.kana,
+          romanji: item.romanji || "",
           options,
           correctAnswer: formattedMeaning,
           questionType: "meaning" as const,
@@ -111,6 +133,7 @@ export default function VocabularyQuizPage() {
         return {
           word: item.word,
           kana: item.kana,
+          romanji: item.romanji || "",
           options,
           correctAnswer: formattedKana,
           questionType: "reading" as const,
@@ -177,6 +200,32 @@ export default function VocabularyQuizPage() {
     setIsCorrect(null)
   }
 
+  const toggleKana = () => {
+    setShowKana(!showKana)
+  }
+
+  const toggleRomanji = () => {
+    setShowRomanji(!showRomanji)
+  }
+
+  // Get JLPT level color
+  const getJlptColor = (level: string) => {
+    switch (level) {
+      case "N1":
+        return "bg-red-100 text-red-800 dark:bg-red-950 dark:text-red-300"
+      case "N2":
+        return "bg-orange-100 text-orange-800 dark:bg-orange-950 dark:text-orange-300"
+      case "N3":
+        return "bg-yellow-100 text-yellow-800 dark:bg-yellow-950 dark:text-yellow-300"
+      case "N4":
+        return "bg-green-100 text-green-800 dark:bg-green-950 dark:text-green-300"
+      case "N5":
+        return "bg-blue-100 text-blue-800 dark:bg-blue-950 dark:text-blue-300"
+      default:
+        return "bg-gray-100 text-gray-800 dark:bg-gray-800 dark:text-gray-300"
+    }
+  }
+
   if (loading) {
     return (
       <div className="container mx-auto px-4 py-8 text-center">
@@ -239,20 +288,47 @@ export default function VocabularyQuizPage() {
           <Tabs defaultValue={jlptLevel} onValueChange={handleJlptLevelChange} className="w-full">
             <TabsList className="flex flex-wrap justify-center gap-1">
               <TabsTrigger value="all">All</TabsTrigger>
-              <TabsTrigger value="N5">N5</TabsTrigger>
-              <TabsTrigger value="N4">N4</TabsTrigger>
-              <TabsTrigger value="N3">N3</TabsTrigger>
-              <TabsTrigger value="N2">N2</TabsTrigger>
-              <TabsTrigger value="N1">N1</TabsTrigger>
+              {Object.entries(getJlptLevelCounts()).map(([level, count]) => (
+                <TabsTrigger
+                  key={level}
+                  value={level}
+                  disabled={count === 0}
+                >
+                  {level}
+                </TabsTrigger>
+              ))}
             </TabsList>
           </Tabs>
         </div>
 
-        <p className="text-lg text-muted-foreground">
+        <p className="text-lg text-muted-foreground mb-4">
           {quizType === "meaning"
             ? "Select the correct meaning for each word"
             : "Select the correct reading for each word"}
         </p>
+
+        {quizType === "meaning" && (
+          <div className="flex justify-center gap-2 mb-4 max-w-md mx-auto">
+            <Toggle
+              pressed={showKana}
+              onPressedChange={toggleKana}
+              aria-label="Toggle hiragana visibility"
+              className="flex gap-1 items-center"
+            >
+              {showKana ? <Eye className="h-4 w-4" /> : <EyeOff className="h-4 w-4" />}
+              Hiragana
+            </Toggle>
+            <Toggle
+              pressed={showRomanji}
+              onPressedChange={toggleRomanji}
+              aria-label="Toggle romanji visibility"
+              className="flex gap-1 items-center"
+            >
+              {showRomanji ? <Eye className="h-4 w-4" /> : <EyeOff className="h-4 w-4" />}
+              Romanji
+            </Toggle>
+          </div>
+        )}
       </div>
 
       <div className="max-w-md mx-auto">
@@ -265,15 +341,33 @@ export default function VocabularyQuizPage() {
 
         <Progress value={(currentQuestion / quizQuestions.length) * 100} className="h-2 mb-6" />
 
-        <Card className="mb-6">
-          <CardContent className="flex items-center justify-center p-12">
-            <div className="text-center">
-              <div className="text-4xl font-bold mb-2">{currentQuiz.word}</div>
-              <div className="flex flex-col gap-1">
-                {quizType === "meaning" && <div className="text-xl">{currentQuiz.kana}</div>}
-                {jlptLevel === "all" && (
-                  <div className="text-sm text-muted-foreground">JLPT Level: {currentQuiz.jlptLevel}</div>
-                )}
+        <Card className="mb-6 overflow-hidden rounded-xl border shadow-sm">
+          <CardContent className="p-0">
+            <div className="flex flex-col h-[250px]">
+              {/* Word - fixed section */}
+              <div className="flex-none flex flex-col items-center justify-center pt-8 pb-4">
+                <div className="text-4xl font-bold mb-2">{currentQuiz.word}</div>
+                <div className="flex flex-col items-center">
+                  {quizType === "meaning" && showKana && <div className="text-xl mb-1">{currentQuiz.kana}</div>}
+                  {quizType === "meaning" && showRomanji && currentQuiz.romanji && (
+                    <div className="text-lg text-muted-foreground max-w-full px-4 text-center break-words">
+                      {formatWithCommas(currentQuiz.romanji)}
+                    </div>
+                  )}
+                </div>
+              </div>
+
+              {/* JLPT badge always shown */}
+              <div className="flex-1 overflow-y-auto px-6 py-4 pt-2">
+                <div className="flex items-center gap-2 justify-center">
+                  <span
+                    className={`inline-block px-2 py-0.5 rounded-full text-sm font-medium ${getJlptColor(
+                      currentQuiz.jlptLevel,
+                    )}`}
+                  >
+                    {currentQuiz.jlptLevel}
+                  </span>
+                </div>
               </div>
             </div>
           </CardContent>
@@ -292,13 +386,13 @@ export default function VocabularyQuizPage() {
                     ? "default"
                     : "outline"
               }
-              className="h-auto min-h-12 text-lg justify-between py-2"
+              className="h-auto min-h-12 text-lg justify-between py-3 px-4 rounded-lg"
               onClick={() => handleAnswerClick(option)}
               disabled={selectedAnswer !== null}
             >
-              <span className="text-left truncate max-w-[90%]">{option}</span>
-              {selectedAnswer === option && isCorrect && <CheckCircle2 className="h-5 w-5 flex-shrink-0 ml-2" />}
-              {selectedAnswer === option && !isCorrect && <XCircle className="h-5 w-5 flex-shrink-0 ml-2" />}
+              <span className="text-left break-words mr-2">{option}</span>
+              {selectedAnswer === option && isCorrect && <CheckCircle2 className="h-5 w-5 flex-shrink-0" />}
+              {selectedAnswer === option && !isCorrect && <XCircle className="h-5 w-5 flex-shrink-0" />}
             </Button>
           ))}
         </div>
