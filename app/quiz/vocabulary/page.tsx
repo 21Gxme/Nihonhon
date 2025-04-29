@@ -33,14 +33,13 @@ export default function VocabularyQuizPage() {
   const [showKana, setShowKana] = useState(true)
   const [showRomanji, setShowRomanji] = useState(true)
 
-  // Get counts for each JLPT level
   const getJlptLevelCounts = () => {
     const counts = {
-      N1: 0,
-      N2: 0,
-      N3: 0,
-      N4: 0,
       N5: 0,
+      N4: 0,
+      N3: 0,
+      N2: 0,
+      N1: 0,
     }
     vocabulary.forEach((item) => {
       if (counts.hasOwnProperty(item.jlpt_level)) {
@@ -50,7 +49,6 @@ export default function VocabularyQuizPage() {
     return counts
   }
 
-  // Format string to use commas instead of semicolons
   const formatWithCommas = (text: string) => {
     if (!text) return ""
     return text
@@ -66,7 +64,6 @@ export default function VocabularyQuizPage() {
         const data = await response.json()
         setVocabulary(data)
 
-        // Generate quiz questions
         if (data.length > 0) {
           const questions = generateQuizQuestions(data, quizType, jlptLevel)
           setQuizQuestions(questions)
@@ -83,28 +80,22 @@ export default function VocabularyQuizPage() {
   }, [quizType, jlptLevel])
 
   const generateQuizQuestions = (data: Vocabulary[], type: "meaning" | "reading", level: string) => {
-    // Filter by JLPT level if needed
     const filteredData = level === "all" ? data : data.filter((item) => item.jlpt_level === level)
 
-    // Shuffle the data
     const shuffledData = [...filteredData].sort(() => Math.random() - 0.5)
 
-    // Take the first 10 items for the quiz (or less if not enough data)
     const quizItems = shuffledData.slice(0, Math.min(10, shuffledData.length))
 
     return quizItems.map((item) => {
       if (type === "meaning") {
-        // Format meaning with commas instead of semicolons
         const formattedMeaning = formatWithCommas(item.meaning)
 
-        // Get 3 random incorrect options for meaning
         const incorrectOptions = shuffledData
           .filter((v) => v.meaning !== item.meaning)
           .sort(() => Math.random() - 0.5)
           .slice(0, 3)
           .map((v) => formatWithCommas(v.meaning))
 
-        // Combine correct and incorrect options and shuffle
         const options = [formattedMeaning, ...incorrectOptions].sort(() => Math.random() - 0.5)
 
         return {
@@ -117,17 +108,14 @@ export default function VocabularyQuizPage() {
           jlptLevel: item.jlpt_level,
         }
       } else {
-        // Format kana with commas instead of semicolons
         const formattedKana = formatWithCommas(item.kana)
 
-        // Get 3 random incorrect options for reading (using kana)
         const incorrectOptions = shuffledData
           .filter((v) => v.kana !== item.kana)
           .sort(() => Math.random() - 0.5)
           .slice(0, 3)
           .map((v) => formatWithCommas(v.kana))
 
-        // Combine correct and incorrect options and shuffle
         const options = [formattedKana, ...incorrectOptions].sort(() => Math.random() - 0.5)
 
         return {
@@ -144,7 +132,7 @@ export default function VocabularyQuizPage() {
   }
 
   const handleAnswerClick = (answer: string) => {
-    if (selectedAnswer !== null) return // Prevent multiple selections
+    if (selectedAnswer !== null) return
 
     const currentQuiz = quizQuestions[currentQuestion]
     const correct = answer === currentQuiz.correctAnswer
@@ -156,7 +144,6 @@ export default function VocabularyQuizPage() {
       setScore(score + 1)
     }
 
-    // Move to next question after a delay
     setTimeout(() => {
       if (currentQuestion < quizQuestions.length - 1) {
         setCurrentQuestion(currentQuestion + 1)
@@ -169,7 +156,6 @@ export default function VocabularyQuizPage() {
   }
 
   const restartQuiz = () => {
-    // Generate new questions
     if (vocabulary.length > 0) {
       const questions = generateQuizQuestions(vocabulary, quizType, jlptLevel)
       setQuizQuestions(questions)
@@ -208,19 +194,18 @@ export default function VocabularyQuizPage() {
     setShowRomanji(!showRomanji)
   }
 
-  // Get JLPT level color
   const getJlptColor = (level: string) => {
     switch (level) {
-      case "N1":
-        return "bg-red-100 text-red-800 dark:bg-red-950 dark:text-red-300"
-      case "N2":
-        return "bg-orange-100 text-orange-800 dark:bg-orange-950 dark:text-orange-300"
-      case "N3":
-        return "bg-yellow-100 text-yellow-800 dark:bg-yellow-950 dark:text-yellow-300"
-      case "N4":
-        return "bg-green-100 text-green-800 dark:bg-green-950 dark:text-green-300"
       case "N5":
         return "bg-blue-100 text-blue-800 dark:bg-blue-950 dark:text-blue-300"
+      case "N4":
+        return "bg-green-100 text-green-800 dark:bg-green-950 dark:text-green-300"
+      case "N3":
+        return "bg-yellow-100 text-yellow-800 dark:bg-yellow-950 dark:text-yellow-300"
+      case "N2":
+        return "bg-orange-100 text-orange-800 dark:bg-orange-950 dark:text-orange-300"
+      case "N1":
+        return "bg-red-100 text-red-800 dark:bg-red-950 dark:text-red-300"
       default:
         return "bg-gray-100 text-gray-800 dark:bg-gray-800 dark:text-gray-300"
     }
@@ -286,17 +271,23 @@ export default function VocabularyQuizPage() {
           </Tabs>
 
           <Tabs defaultValue={jlptLevel} onValueChange={handleJlptLevelChange} className="w-full">
-            <TabsList className="flex flex-wrap justify-center gap-1">
+            <TabsList className="grid grid-cols-6">
               <TabsTrigger value="all">All</TabsTrigger>
-              {Object.entries(getJlptLevelCounts()).map(([level, count]) => (
-                <TabsTrigger
-                  key={level}
-                  value={level}
-                  disabled={count === 0}
-                >
-                  {level}
-                </TabsTrigger>
-              ))}
+              <TabsTrigger value="N5" disabled={getJlptLevelCounts().N5 === 0}>
+                N5
+              </TabsTrigger>
+              <TabsTrigger value="N4" disabled={getJlptLevelCounts().N4 === 0}>
+                N4
+              </TabsTrigger>
+              <TabsTrigger value="N3" disabled={getJlptLevelCounts().N3 === 0}>
+                N3
+              </TabsTrigger>
+              <TabsTrigger value="N2" disabled={getJlptLevelCounts().N2 === 0}>
+                N2
+              </TabsTrigger>
+              <TabsTrigger value="N1" disabled={getJlptLevelCounts().N1 === 0}>
+                N1
+              </TabsTrigger>
             </TabsList>
           </Tabs>
         </div>
@@ -344,7 +335,6 @@ export default function VocabularyQuizPage() {
         <Card className="mb-6 overflow-hidden rounded-xl border shadow-sm">
           <CardContent className="p-0">
             <div className="flex flex-col h-[250px]">
-              {/* Word - fixed section */}
               <div className="flex-none flex flex-col items-center justify-center pt-8 pb-4">
                 <div className="text-4xl font-bold mb-2">{currentQuiz.word}</div>
                 <div className="flex flex-col items-center">
@@ -357,7 +347,6 @@ export default function VocabularyQuizPage() {
                 </div>
               </div>
 
-              {/* JLPT badge always shown */}
               <div className="flex-1 overflow-y-auto px-6 py-4 pt-2">
                 <div className="flex items-center gap-2 justify-center">
                   <span
